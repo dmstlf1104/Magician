@@ -8,10 +8,16 @@ public class EnemyMove : MonoBehaviour
     private Transform[] wayPoints; //이동경로 정보
     private int currentIndex = 0; //목표지점 인덱스
     private Movement2D movement2D; //오브젝트 이동제어
+    private SpriteRenderer rend;
 
+    public void Start()
+    {
+        rend = GetComponent<SpriteRenderer>();
+    }
     public void Setup(Transform[] wayPoints)
     {
         movement2D = GetComponent<Movement2D>();
+        
 
         //이동경로 waypoint 설정
         wayPointCount = wayPoints.Length;
@@ -57,6 +63,21 @@ public class EnemyMove : MonoBehaviour
         else
         {
             Destroy(gameObject);
+        }
+    }
+
+    public void OnTriggerEnter2D(Collider2D coll)
+    {
+        if(coll.gameObject.tag == "Left")
+        {
+            Debug.Log("왼쪽");
+            rend.flipX = true;
+        }
+        
+        if(coll.gameObject.tag == "Right")
+        {
+            Debug.Log("오른쪽");
+            rend.flipX = false;
         }
     }
 }
