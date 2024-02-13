@@ -9,38 +9,22 @@ public class CardSlotUI : MonoBehaviour
     public Button button;
     public Image icon;
     public TextMeshProUGUI useText;
-    private CardSlot curSlot;
-    private Outline outline;
+    private CardData curCard;
 
     public int index;
-    public bool used;
 
-    private void Awake()
+    public void Set(CardData card)
     {
-        outline = GetComponent<Outline>();
-    }
-
-    private void OnEnable()
-    {
-        outline.enabled = used;
-    }
-    public void Set(CardSlot slot)
-    {
-        curSlot = slot;
+        curCard = card;
         icon.gameObject.SetActive(true);
-        icon.sprite = slot.card.icon;
-        useText.text = slot.card.used == true ? "사용중" : string.Empty;
-
-        if (outline != null)
-        {
-            outline.enabled = used;
-        }
+        icon.sprite = card.icon;
+        useText.text = card.used == true ? "사용중" : string.Empty;
 
     }
 
     public void Clear()
     {
-        curSlot = null;
+        curCard = null;
         icon.gameObject.SetActive(false);
         useText.text = string.Empty;
     }

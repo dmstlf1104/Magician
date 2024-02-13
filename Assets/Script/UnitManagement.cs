@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using TMPro;
 using Unity.VisualScripting;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 using UnityEngine.Events;
@@ -12,33 +13,22 @@ using UnityEngine.XR;
 using static UnityEditor.Progress;
 
 
-public class CardSlot
-{
-    public CardData card;
-}
-
-public class UsedCardSlot
-{
-    public CardData card;
-}
-
 public class UnitManagement : MonoBehaviour
 {
     public CardSlotUI[] uiSlots;
-    public static CardSlot[] slots = new CardSlot[18];
+    public static CardData[] cardSlots = new CardData[18];
 
     public UsedCardSoltUI[] usedUISlots;
-    public static UsedCardSlot[] usedSlots = new UsedCardSlot[5];
+    public static CardData[] usedCardSlots = new CardData[5];
 
-    [Header("Selected Item")]
-    private CardSlot selectedCard;
+    [Header("Selected Card")]
+    private CardData selectedCard;
     private int selectedCardIndex;
     public TextMeshProUGUI selectedCardName;
     public TextMeshProUGUI selectedCardDescription;
     public GameObject useButton;
     public GameObject unUseButton;
     public GameObject dropButton;
-    public CardObject cardObject;
 
     private int curUsedIndex;
 
@@ -47,36 +37,28 @@ public class UnitManagement : MonoBehaviour
     void Awake()
     {
         instance = this;
-        cardObject = GetComponent<CardObject>();
     }
 
     private void Start()
     {
-        //slots = new CardSlot[uiSlots.Length];
-        //usedSlots = new UsedCardSlot[usedUISlots.Length];
-        for (int i = 0; i < slots.Length; i++)
+        for (int i = 0; i < 18; i++)
         {
-            slots[i] = new CardSlot();
             uiSlots[i].index = i;
             uiSlots[i].Clear();
         }
-        for (int i = 0; i < usedSlots.Length; i++)
+        for (int i = 0; i < 5; i++)
         {
-            usedSlots[i] = new UsedCardSlot();
-            usedUISlots[i].index = i;
-            usedUISlots[i].Clear();
+            usedUISlots[i].Set();
         }
-
         ClearSelectedCardWindow();
-        cardObject.OnAddCard();
     }
 
     public void AddCard(CardData card)
     {
-        CardSlot emptySlot = GetEmptySlot();
+        CardData emptySlot = GetEmptySlot();
         if (emptySlot != null)
         {
-            emptySlot.card = card;
+            emptySlot = card;
             UpdateUI();
             return;
         }
@@ -84,46 +66,37 @@ public class UnitManagement : MonoBehaviour
 
     void UpdateUI()
     {
-        for (int i = 0; i < slots.Length; i++)
+        for (int i = 0; i < cardSlots.Length; i++)
         {
-            if (slots[i].card != null)
-                uiSlots[i].Set(slots[i]);
+            if (cardSlots[i] != null)
+                uiSlots[i].Set(cardSlots[i]);
             else
                 uiSlots[i].Clear();
         }
-        if (uiSlots[selectedCardIndex].used == true)
-        {
-            for (int i = 0; i < usedSlots.Length; i++)
-            {
-                if (usedSlots[i].card == null)
-                    usedUISlots[i].Set(usedSlots[i]);
-                
-            }
-        }
     }
 
-    CardSlot GetEmptySlot()
+    CardData GetEmptySlot()
     {
-        for (int i = 0; i < slots.Length; i++)
+        for (int i = 0; i < cardSlots.Length; i++)
         {
-            if (slots[i].card == null)
-                return slots[i];
+            if (cardSlots[i] == null)
+                return cardSlots[i];
         }
         return null;
     }
 
     public void SelectItem(int index)
     {
-        if (slots[index].card == null)
+        if (cardSlots[index] == null)
             return;
-        selectedCard = slots[index];
+        selectedCard = cardSlots[index];
         selectedCardIndex = index;
 
-        selectedCardName.text = selectedCard.card.displayName;
-        selectedCardDescription.text = selectedCard.card.description;
+        selectedCardName.text = selectedCard.displayName;
+        selectedCardDescription.text = selectedCard.description;
 
-        useButton.SetActive(selectedCard.card.used == false);
-        unUseButton.SetActive(selectedCard.card.used == true);
+        useButton.SetActive(selectedCard.used == false);
+        unUseButton.SetActive(selectedCard.used == true);
         dropButton.SetActive(true);
     }
 
@@ -141,22 +114,16 @@ public class UnitManagement : MonoBehaviour
 
     public void OnUseButton()
     {
-        if (uiSlots[curUsedIndex].used && usedSlots.Length>=usedUISlots.Length)
-        {
-            UnUse(curUsedIndex);
-        }
-
-        uiSlots[selectedCardIndex].used = true;
+        cardSlots[selectedCardIndex].used = true;
         curUsedIndex = selectedCardIndex;
-        UpdateUI();
         SelectItem(selectedCardIndex);
+        UpdateUI();
     }
 
     void UnUse(int index)
     {
-        uiSlots[index].used = false;
+        cardSlots[index].used = false;
         UpdateUI();
-
         if (selectedCardIndex == index)
         {
             SelectItem(index);
@@ -165,7 +132,11 @@ public class UnitManagement : MonoBehaviour
 
     public void OnUnUseButton()
     {
-        UnUse(selectedCardIndex);
+        cardSlots[selectedCardIndex].used = false;
+        curUsedIndex = selectedCardIndex;
+        SelectItem(selectedCardIndex);
+        UpdateUI();
+        
     }
 
     public void OnDropButton()
@@ -180,12 +151,12 @@ public class UnitManagement : MonoBehaviour
 
     private void RemoveSelectedItem()
     {
-        if (uiSlots[selectedCardIndex].used)
+        if (cardSlots[selectedCardIndex].used)
         {
             UnUse(selectedCardIndex);
         }
 
-        selectedCard.card = null;
+        selectedCard = null;
         ClearSelectedCardWindow();
         UpdateUI();
     }
