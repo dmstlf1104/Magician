@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 9177387312007019437}
   - component: {fileID: 1410731562892998253}
   m_Layer: 0
-  m_Name: UsedCard
+  m_Name: UsedItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -163,10 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bf4fd895bc420c4b8123dbb347e561d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: {fileID: 2129088001937948751}
   icon: {fileID: 2673030391988733447}
-  index: 0
-  used: 0
 --- !u!1 &9125641639034253764
 GameObject:
   m_ObjectHideFlags: 0

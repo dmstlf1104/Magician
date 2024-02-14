@@ -4,19 +4,26 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UsedCardSoltUI : MonoBehaviour
+public class UsedItemSoltUI : MonoBehaviour
 {
     public Image icon;
 
-    public void Set(CardData card)
+    public int index;
+
+    public void Set(ItemSlot slot)
     {
         icon.gameObject.SetActive(true);
-        icon.sprite = card.icon;
+        icon.sprite = slot.item.icon;
     }
 
     public void Clear()
     {
-        icon.sprite = null;
         icon.gameObject.SetActive(false);
+        icon.sprite = null;
+    }
+
+    public void OnButtonClick()
+    {
+        UnitManagement.instance.SelectItem(index);
     }
 }

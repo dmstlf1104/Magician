@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1114072250944595204}
   - component: {fileID: -4469825967876599842}
   m_Layer: 0
-  m_Name: CardSlot
+  m_Name: ItemSlot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -166,8 +166,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   button: {fileID: 2651301876978717412}
   icon: {fileID: 6996292555896987337}
-  useText: {fileID: 6689340386124332439}
+  quatityText: {fileID: 6689340386124332439}
   index: 0
+  equipped: 0
 --- !u!1 &5115048661599808328
 GameObject:
   m_ObjectHideFlags: 0

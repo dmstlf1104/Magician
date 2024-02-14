@@ -4,29 +4,25 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CardSlotUI : MonoBehaviour
+public class ItemSlotUI : MonoBehaviour
 {
     public Button button;
     public Image icon;
-    public TextMeshProUGUI useText;
-    private CardData curCard;
+    public TextMeshProUGUI quatityText;
 
     public int index;
 
-    public void Set(CardData card)
+    public void Set(ItemSlot slot)
     {
-        curCard = card;
         icon.gameObject.SetActive(true);
-        icon.sprite = card.icon;
-        useText.text = card.used == true ? "사용중" : string.Empty;
-
+        icon.sprite = slot.item.icon;
+        quatityText.text = slot.item.used==true ? "사용중" : string.Empty;
     }
 
     public void Clear()
     {
-        curCard = null;
         icon.gameObject.SetActive(false);
-        useText.text = string.Empty;
+        quatityText.text = string.Empty;
     }
 
     public void OnButtonClick()

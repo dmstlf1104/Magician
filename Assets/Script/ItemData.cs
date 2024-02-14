@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CardData : MonoBehaviour
+public class ItemData : MonoBehaviour
 {
     [Header("Info")]
     public string displayName;
