@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.UIElements.UxmlAttributeDescription;
 
-public class BuyUnit : MonoBehaviour
+public class SellUnit : MonoBehaviour
 {
     [SerializeField] private TMP_Text objectName;
     [SerializeField] private Image thumbnail;
@@ -12,11 +13,18 @@ public class BuyUnit : MonoBehaviour
     [SerializeField] private GameObject detailExPanel;
     [SerializeField] private TMP_Text detailExTxt;
     [SerializeField] private TMP_Text objectTxt;
-    //[SerializeField] private Button buyBtn;
+    [SerializeField] private Button buyBtn;
+    [SerializeField] private GameObject buyCompletePanel;    
 
     bool isPanelActive = false;
 
     private Unit unit;
+    private ShopManager shopManager;
+
+    private void Awake()
+    {
+        shopManager = ShopManager.Instance;
+    }
 
     public void InitU(Unit unit)
     {
@@ -27,11 +35,30 @@ public class BuyUnit : MonoBehaviour
         detailExTxt.text = unit.Data.detailEx;
         objectTxt.text = $"공격력 : {unit.Data.Stat.atk.ToString()}     치명타 : {unit.Data.Stat.crt.ToString()}\n공격속도 : {unit.Data.Stat.atkS.ToString()}\n가격 : {unit.Data.Price.ToString()} Gold";
         detailExBtn.onClick.AddListener(OndetailExPanel);
+        buyBtn.onClick.AddListener(() => OnBuyCompletePanel(unit));
     }
 
     void OndetailExPanel()
     {
         isPanelActive = !isPanelActive;
         detailExPanel.SetActive(isPanelActive);
+    }
+
+    void OnBuyCompletePanel(Unit unit)
+    {
+        this.unit = unit;
+
+        if(shopManager.User.gold >= unit.Data.Price)
+        {
+            shopManager.User.gold -= unit.Data.Price;
+            buyCompletePanel.SetActive(true);
+            shopManager.PlayerGold.text = shopManager.User.gold.ToString();
+            //shopManager.User.Inventory.Add(unit); 구매하면 인벤토리에 추가
+        }
+        else
+        {
+            shopManager.UnitNotMoney.SetActive(true);
+        }
+        
     }
 }

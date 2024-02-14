@@ -27,3 +27,4 @@ MonoBehaviour:
   FireType: 0
   FrostType: 0
   EarthType: 1
+  UnitIndex: 5

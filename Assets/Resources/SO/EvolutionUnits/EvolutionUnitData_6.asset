@@ -9,22 +9,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b37d70243ed5ea429a2e3dd0f903ce4, type: 3}
-  m_Name: 5.Frost_Unit2
+  m_Script: {fileID: 11500000, guid: a7e4c2114b4e9ff47a2c6f64be3d8ca1, type: 3}
+  m_Name: EvolutionUnitData_6
   m_EditorClassIdentifier: 
-  Name: "\uBE14\uB9AC\uC790\uB4DC"
-  detailEx: "\uBC94\uC704 \uC774\uB3D9\uC18D\uB3C4 \uAC10\uC18C"
-  ObjectSprite: {fileID: 21300000, guid: fc728c12c159e7b4ea91222277613926, type: 3}
+  Name: "\uC5BC\uC74C \uB9C8\uBC95 \uC9C4\uD654 3"
+  detailEx: "\uC0C1\uC138"
+  ObjectSprite: {fileID: 21300000, guid: 2b12579845e4d1e4ca2640abbfdf8cd6, type: 3}
   Stat:
-    atk: 75
-    atkS: 25
-    crt: 5
+    atk: 0
+    atkS: 0
+    crt: 0
     def: 0
     msp: 0
-    slow: 15
+    slow: 0
     stun: 0
-  Price: 5500
+  Price: 20000
   FireType: 0
   FrostType: 1
   EarthType: 0
-  UnitIndex: 4

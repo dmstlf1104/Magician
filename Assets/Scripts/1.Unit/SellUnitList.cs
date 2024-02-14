@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OwnedUnitList : MonoBehaviour
+public class SellUnitList : MonoBehaviour
 {
-    [Header("User OwnedUnit")]
+    [Header("User SellUnit")]
     [SerializeField] private Transform content;
     [SerializeField] private GameObject ownedItem;
 
@@ -14,10 +14,10 @@ public class OwnedUnitList : MonoBehaviour
     }
     void InitU()
     {
-        foreach(Unit unit in ShopManager.Instance.User.OwnedUnits)
+        foreach(Unit unit in ShopManager.Instance.User.SellUnits)
         {
-            BuyUnit buyUnit = Instantiate(ownedItem, content).GetComponent<BuyUnit>();
-            buyUnit.InitU(unit);
+            SellUnit sellUnit = Instantiate(ownedItem, content).GetComponent<SellUnit>();
+            sellUnit.InitU(unit);
         }
     }    
 }

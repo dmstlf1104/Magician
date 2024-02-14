@@ -1,10 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "UnitData_", menuName = "Data/Unit")]
-public class UnitData : ScriptableObject
+[CreateAssetMenu(fileName = "EvolutionUnitData_", menuName = "Data/EvolutionUnit")]
+public class EvolutionUnitData : ScriptableObject
 {
     public string Name;
     public string detailEx;
@@ -13,5 +12,5 @@ public class UnitData : ScriptableObject
     public int Price;
     public bool FireType;
     public bool FrostType;
-    public bool EarthType;    
+    public bool EarthType;
 }
