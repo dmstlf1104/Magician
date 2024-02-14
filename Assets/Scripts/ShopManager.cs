@@ -27,14 +27,21 @@ public class Status
 public class UserData
 {
     public List<Unit> OwnedUnits = new List<Unit>();
-    public List<Unit> OwnedRelics = new List<Unit>();
+    public List<Relic> OwnedRelics = new List<Relic>();
 }
 
 [System.Serializable]
 public class Unit
 {
     public bool IsPurchase;    
-    public ObjectData Data;
+    public UnitData Data;
+}
+
+[System.Serializable]
+public class Relic
+{
+    public bool IsPurchase;
+    public RelicData Data;
 }
 public class ShopManager : MonoBehaviour
 {

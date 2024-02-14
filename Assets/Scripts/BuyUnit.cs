@@ -10,7 +10,7 @@ public class BuyUnit : MonoBehaviour
     [SerializeField] private Image thumbnail;
     [SerializeField] private Button detailExBtn;
     [SerializeField] private GameObject detailExPanel;
-    [SerializeField] [TextArea] private TMP_Text detailExTxt;
+    [SerializeField] private TMP_Text detailExTxt;
     [SerializeField] private TMP_Text objectTxt;
     //[SerializeField] private Button buyBtn;
 
@@ -18,7 +18,7 @@ public class BuyUnit : MonoBehaviour
 
     private Unit unit;
 
-    public void Init(Unit unit)
+    public void InitU(Unit unit)
     {
         this.unit = unit;
 
