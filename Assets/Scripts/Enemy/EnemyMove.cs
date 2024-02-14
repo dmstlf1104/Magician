@@ -70,13 +70,13 @@ public class EnemyMove : MonoBehaviour
     {
         if(coll.gameObject.tag == "Left")
         {
-            Debug.Log("哭率");
+            //Debug.Log("哭率");
             rend.flipX = true;
         }
         
         if(coll.gameObject.tag == "Right")
         {
-            Debug.Log("坷弗率");
+            //Debug.Log("坷弗率");
             rend.flipX = false;
         }
     }
