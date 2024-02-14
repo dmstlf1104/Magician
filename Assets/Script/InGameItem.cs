@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 
 public class InGameItem : MonoBehaviour
@@ -9,6 +11,14 @@ public class InGameItem : MonoBehaviour
     public UsedItemSoltUI[] usedUISlots;
     public ItemSlot[] usedSlots;
 
+    public bool itemSet;
+
+    public static InGameItem instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -38,9 +48,11 @@ public class InGameItem : MonoBehaviour
         }
     }
 
-    public void InGameItemSet()
+    public void OnItemSet(int index)
     {
-
+        if (usedSlots[index].item == null)
+            return;
+        
     }
 
 }
