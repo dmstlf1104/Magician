@@ -168,7 +168,6 @@ MonoBehaviour:
   icon: {fileID: 6996292555896987337}
   quatityText: {fileID: 6689340386124332439}
   index: 0
-  equipped: 0
 --- !u!1 &5115048661599808328
 GameObject:
   m_ObjectHideFlags: 0
@@ -245,7 +244,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

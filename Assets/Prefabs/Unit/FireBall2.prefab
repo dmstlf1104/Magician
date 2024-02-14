@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1989564118517275939}
   - component: {fileID: 9066810675560307566}
   m_Layer: 0
-  m_Name: FireBall
+  m_Name: FireBall2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,10 +45,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2421ef650df935444a7ce06265255065, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayName: "\uD30C\uC774\uC5B4\uBCFC"
-  description: "\uD30C\uC774\uC5B4\uBCFC\uC744 \uBC1C\uC0AC\uD55C\uB2E4."
-  icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  displayName: "\uD30C\uC774\uC5B4\uBCFC2"
+  description: "\uB354 \uAC15\uB825\uD55C \uD30C\uC774\uC5B4\uBCFC\uC744 \uBC1C\uC0AC\uD55C\uB2E4."
+  icon: {fileID: 21300000, guid: 15159cc6bc2818f49890314132c80036, type: 3}
   used: 0
+  atk: 20
+  atkSpeed: 2
 --- !u!114 &9066810675560307566
 MonoBehaviour:
   m_ObjectHideFlags: 0

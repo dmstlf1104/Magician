@@ -10,5 +10,7 @@ public class ItemData : MonoBehaviour
     public string description;
     public Sprite icon;
     public bool used;
+    public int atk;
+    public int atkSpeed;
 
 }

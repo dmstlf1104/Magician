@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor.SceneManagement;
 using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 using UnityEngine.Events;
@@ -29,14 +30,19 @@ public class UnitManagement : MonoBehaviour
     private int selectedItemIndex;
     public TextMeshProUGUI selectedItemName;
     public TextMeshProUGUI selectedItemDescription;
+    public TextMeshProUGUI selectedItemAtk;
+    public TextMeshProUGUI selectedItemAtkSpeed;
     public GameObject useButton;
     public GameObject unUseButton;
     public GameObject dropButton;
     public GameObject backButton;
 
-    public GameObject BG;
+    public GameObject upgradeButton;
+    public GameObject speedUpgradeButton;
+    public GameObject atkUpgradeButton;
+    public GameObject cancelButton;
 
-    private int curEquipIndex;
+    public GameObject BG;
 
     public static UnitManagement instance;
     // Start is called before the first frame update
@@ -115,9 +121,12 @@ public class UnitManagement : MonoBehaviour
 
         selectedItemName.text = selectedItem.item.displayName;
         selectedItemDescription.text = selectedItem.item.description;
+        selectedItemAtk.text = "공격력:" + selectedItem.item.atk.ToString();
+        selectedItemAtkSpeed.text = "공격속도" + selectedItem.item.atkSpeed.ToString();
         useButton.SetActive(selectedItem.item.used == false);
         unUseButton.SetActive(selectedItem.item.used == true);
         dropButton.SetActive(true);
+        upgradeButton.SetActive(true);
     }
 
     private void ClearSelectedItemWindow()
@@ -125,9 +134,12 @@ public class UnitManagement : MonoBehaviour
         selectedItem = null;
         selectedItemName.text = string.Empty;
         selectedItemDescription.text = string.Empty;
+        selectedItemAtk.text = string.Empty;
+        selectedItemAtkSpeed.text = string.Empty;
         useButton.SetActive(false);
         unUseButton.SetActive(false);
         dropButton.SetActive(false);
+        upgradeButton.SetActive(false);
     }
 
     public void OnUseButton()
@@ -141,7 +153,6 @@ public class UnitManagement : MonoBehaviour
                 break;
             }
         }
-        curEquipIndex = selectedItemIndex;
         UpdateUI();
 
         SelectItem(selectedItemIndex);
@@ -168,7 +179,6 @@ public class UnitManagement : MonoBehaviour
                 break;
             }
         }
-        curEquipIndex = selectedItemIndex;
         UpdateUI();
 
         SelectItem(selectedItemIndex);
@@ -179,11 +189,46 @@ public class UnitManagement : MonoBehaviour
         RemoveSelectedItem();
     }
 
+    public void OnUpgradeButton()
+    {
+        upgradeButton.SetActive(false);
+        speedUpgradeButton.SetActive(true);
+        atkUpgradeButton.SetActive(true);
+        cancelButton.SetActive(true);
+    }
+
+    public void OnCancelButton()
+    {
+        upgradeButton.SetActive(true);
+        speedUpgradeButton.SetActive(false);
+        atkUpgradeButton.SetActive(false);
+        cancelButton.SetActive(false);
+    }
+
+    public void OnSpeedUpgradeButton()
+    {
+        upgradeButton.SetActive(true);
+        speedUpgradeButton.SetActive(false);
+        atkUpgradeButton.SetActive(false);
+        cancelButton.SetActive(false);
+        slots[selectedItemIndex].item.atkSpeed += 1;
+        SelectItem(selectedItemIndex);
+    }
+
+    public void OnAtkUpgradeButton()
+    {
+        upgradeButton.SetActive(true);
+        speedUpgradeButton.SetActive(false);
+        atkUpgradeButton.SetActive(false);
+        cancelButton.SetActive(false);
+        slots[selectedItemIndex].item.atk += 5;
+        SelectItem(selectedItemIndex);
+    }
 
     public void OnBackButton()
     {
-        //SceneManager.LoadScene();
         BG.SetActive(false);
+        SceneManager.LoadScene("SampleScene");
     }
 
     public void OnStart()
