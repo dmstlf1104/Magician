@@ -42,6 +42,8 @@ public class UnitManagement : MonoBehaviour
     public GameObject atkUpgradeButton;
     public GameObject cancelButton;
 
+    public ItemObject FireBall;
+
     public GameObject BG;
 
     public static UnitManagement instance;
@@ -68,7 +70,7 @@ public class UnitManagement : MonoBehaviour
             usedUISlots[i].index = i;
             usedUISlots[i].Clear();
         }
-
+        FireBall.OnAddItem();
         ClearSelectedItemWindow();
     }
 
@@ -228,7 +230,6 @@ public class UnitManagement : MonoBehaviour
     public void OnBackButton()
     {
         BG.SetActive(false);
-        SceneManager.LoadScene("SampleScene");
     }
 
     public void OnStart()
@@ -238,9 +239,14 @@ public class UnitManagement : MonoBehaviour
 
     private void RemoveSelectedItem()
     {
-        if (slots[selectedItemIndex].item.used)
+        slots[selectedItemIndex].item.used = false;
+        for (int i = 0; i < usedSlots.Length; i++)
         {
-            UnUse(selectedItemIndex);
+            if (usedSlots[i].item != null && usedSlots[i].item.used == false)
+            {
+                usedSlots[i].item = null;
+                break;
+            }
         }
 
         selectedItem.item = null;
