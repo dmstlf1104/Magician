@@ -9,14 +9,16 @@ public class EnemyMove : MonoBehaviour
     private int currentIndex = 0; //목표지점 인덱스
     private Movement2D movement2D; //오브젝트 이동제어
     private SpriteRenderer rend;
+    private EnemySpawner enemySpawner;
 
     public void Start()
     {
         rend = GetComponent<SpriteRenderer>();
     }
-    public void Setup(Transform[] wayPoints)
+    public void Setup(EnemySpawner enemySpawner,Transform[] wayPoints)
     {
         movement2D = GetComponent<Movement2D>();
+        this.enemySpawner = enemySpawner;
         
 
         //이동경로 waypoint 설정
@@ -62,7 +64,7 @@ public class EnemyMove : MonoBehaviour
         //지금이 마지막 waypoint면
         else
         {
-            Destroy(gameObject);
+            OnDie();
         }
     }
 
@@ -79,5 +81,10 @@ public class EnemyMove : MonoBehaviour
             //Debug.Log("오른쪽");
             rend.flipX = false;
         }
+    }
+
+    public void OnDie()
+    {
+        enemySpawner.DestroyEnemy(this);
     }
 }
