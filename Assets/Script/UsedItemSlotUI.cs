@@ -27,8 +27,8 @@ public class UsedItemSoltUI : MonoBehaviour
         UnitManagement.instance.SelectItem(index);
     }
 
-    public void OnItemSet()
+    public void OnIndex()
     {
-        InGameItem.instance.OnItemSet(index);
+        InGameItem.instance.SetIndex(index);
     }
 }

@@ -12,6 +12,7 @@ public class InGameItem : MonoBehaviour
     public ItemSlot[] usedSlots;
 
     public bool itemSet;
+    public int curIndex;
 
     public static InGameItem instance;
 
@@ -48,11 +49,10 @@ public class InGameItem : MonoBehaviour
         }
     }
 
-    public void OnItemSet(int index)
+    public void SetIndex(int index)
     {
-        if (usedSlots[index].item == null)
-            return;
-        
+        curIndex = index;
     }
+
 
 }
