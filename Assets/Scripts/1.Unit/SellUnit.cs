@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using static UnityEngine.UIElements.UxmlAttributeDescription;
@@ -20,10 +21,12 @@ public class SellUnit : MonoBehaviour
 
     private Unit unit;
     private ShopManager shopManager;
+    private UnitManagement unitManagement;    
 
     private void Awake()
     {
         shopManager = ShopManager.Instance;
+        unitManagement = FindObjectOfType<UnitManagement>();
     }
 
     public void InitU(Unit unit)
@@ -53,7 +56,7 @@ public class SellUnit : MonoBehaviour
             shopManager.User.gold -= unit.Data.Price;
             buyCompletePanel.SetActive(true);
             shopManager.PlayerGold.text = shopManager.User.gold.ToString();
-            //shopManager.User.Inventory.Add(unit); 구매하면 인벤토리에 추가
+            shopManager.User.Inventory.Add(unit);                        
         }
         else
         {

@@ -17,12 +17,13 @@ MonoBehaviour:
   ObjectSprite: {fileID: 21300000, guid: ebaef5902556fef44b513ae4e893d599, type: 3}
   Stat:
     atk: 70
-    atkS: 30
+    atkS: 0.5
     crt: 5
     def: 0
     msp: 0
     slow: 10
     stun: 0
+    range: 2
   Price: 3000
   FireType: 0
   FrostType: 1

@@ -12,11 +12,11 @@ public class ItemSlotUI : MonoBehaviour
 
     public int index;
 
-    public void Set(ItemSlot slot)
+    public void Set(Unit unit)
     {
         icon.gameObject.SetActive(true);
-        icon.sprite = slot.item.icon;
-        quatityText.text = slot.item.used==true ? "사용중" : string.Empty;
+        icon.sprite = unit.Data.ObjectSprite;
+        quatityText.text = unit.Data.Equip==true ? "사용중" : string.Empty;
     }
 
     public void Clear()

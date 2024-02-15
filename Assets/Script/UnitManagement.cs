@@ -15,13 +15,13 @@ using static UnityEditor.Progress;
 
 public class ItemSlot
 {
-    public ItemData item;
+    public ItemData item;    
 }
 
 public class UnitManagement : MonoBehaviour
 {
     public ItemSlotUI[] uiSlots;
-    public ItemSlot[] slots;
+    public ItemSlot[] slots;    
     public UsedItemSoltUI[] usedUISlots;
     public ItemSlot[] usedSlots;
 
@@ -86,7 +86,7 @@ public class UnitManagement : MonoBehaviour
     }
 
     void UpdateUI()
-    {
+    {        
         for (int i = 0; i < slots.Length; i++)
         {
             if (slots[i].item != null)
