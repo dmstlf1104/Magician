@@ -10,10 +10,10 @@ public class UsedItemSoltUI : MonoBehaviour
 
     public int index;
 
-    public void Set(ItemSlot slot)
+    public void Set(Unit unit)
     {
         icon.gameObject.SetActive(true);
-        icon.sprite = slot.item.icon;
+        icon.sprite = unit.Data.ObjectSprite;
     }
 
     public void Clear()
