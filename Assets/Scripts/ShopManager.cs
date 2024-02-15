@@ -8,14 +8,15 @@ using UnityEngine.UI;
 public class Status
 {
     public int atk;
-    public int atkS;
+    public float atkS;
     public int crt;
     public int def;
     public int msp;
     public int slow;
     public int stun;
+    public float range;
 
-    public Status(int atk, int crt, int def, int msp, int atkS, int slow, int stun)
+    public Status(int atk, int crt, int def, int msp, float atkS, int slow, int stun, float range)
     {
         this.atk = atk;
         this.crt = crt;
@@ -24,6 +25,7 @@ public class Status
         this.atkS = atkS;
         this.slow = slow;
         this.stun = stun;
+        this.range = range;
     }
 }
 
