@@ -34,7 +34,7 @@ public class ChatController : MonoBehaviour
         imagema.enabled = false;
         imagemm.enabled = false;
         imagegr.enabled = false;
-        imagebb.enabled = false;
+        imagebb.enabled = true;
     }
 
     void Update()
@@ -45,6 +45,11 @@ public class ChatController : MonoBehaviour
             {
                 isButtonClicked = true;
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            imagebb.enabled = false;
         }
     }
 
@@ -77,9 +82,7 @@ public class ChatController : MonoBehaviour
 
     IEnumerator TextPractice()
     {
-        imagebb.enabled = true;
-        yield return StartCoroutine(NormalChat("시작하겠습니다.", "스페이스바를 눌러주세요"));
-        imagebb.enabled = false;
+        yield return StartCoroutine(NormalChat("Wizard’s Island", "마법사와 해적의 이야기"));
         imageold.enabled = true;
         yield return StartCoroutine(NormalChat("스토리", "오랜 세월 해적들 사이에 전해 내려오던 <color=#FFFF00>신의 유적</color>이라 불리는 <color=#FFFF00>지도</color>가 드디어 발견되었다."));
         imageold.enabled = false;
@@ -101,7 +104,5 @@ public class ChatController : MonoBehaviour
         imagegr.enabled = true;
         yield return StartCoroutine(NormalChat("스토리", "자신의 영역에 침입한 이들을 발견한 그는 그들을 소탕하기로 한다  "));
         SceneManager.LoadScene("MainScene");
-
-        
     }
 }
