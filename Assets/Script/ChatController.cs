@@ -14,6 +14,7 @@ public class ChatController : MonoBehaviour
     public Image imagema;
     public Image imagemm;
     public Image imagegr;
+    public Image imagebb;
 
 
     public Text ChatText;
@@ -33,6 +34,7 @@ public class ChatController : MonoBehaviour
         imagema.enabled = false;
         imagemm.enabled = false;
         imagegr.enabled = false;
+        imagebb.enabled = false;
     }
 
     void Update()
@@ -75,7 +77,9 @@ public class ChatController : MonoBehaviour
 
     IEnumerator TextPractice()
     {
+        imagebb.enabled = true;
         yield return StartCoroutine(NormalChat("시작하겠습니다.", "스페이스바를 눌러주세요"));
+        imagebb.enabled = false;
         imageold.enabled = true;
         yield return StartCoroutine(NormalChat("스토리", "오랜 세월 해적들 사이에 전해 내려오던 <color=#FFFF00>신의 유적</color>이라 불리는 <color=#FFFF00>지도</color>가 드디어 발견되었다."));
         imageold.enabled = false;
