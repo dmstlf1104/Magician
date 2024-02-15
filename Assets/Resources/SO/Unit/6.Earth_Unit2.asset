@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b37d70243ed5ea429a2e3dd0f903ce4, type: 3}
+  m_Name: 6.Earth_Unit2
+  m_EditorClassIdentifier: 
+  Name: "\uC5B4\uC2A4\uD018\uC774\uD06C"
+  detailEx: "10%\uD655\uB960 \uBC94\uC704 \uC2A4\uD134"
+  ObjectSprite: {fileID: 21300000, guid: bf17e272b8a96ba4b89725bc4d6b9b0e, type: 3}
+  Stat:
+    atk: 85
+    atkS: 20
+    crt: 5
+    def: 0
+    msp: 0
+    slow: 0
+    stun: 10
+  Price: 6000
+  FireType: 0
+  FrostType: 0
+  EarthType: 1
+  UnitIndex: 5
