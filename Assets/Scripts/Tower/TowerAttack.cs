@@ -19,8 +19,8 @@ public class TowerAttack : MonoBehaviour
     
     private void Awake()
     {
-        attackRate = unitData.Data.Stat.atkS;
-        attackRange = unitData.Data.Stat.range;
+        attackRate = unitData.Data.Stat.atkS + ShopManager.Instance.User.Stat.atkS;
+        attackRange = unitData.Data.Stat.range + ShopManager.Instance.User.Stat.range;
     }
     public void Setup(EnemySpawner enemySpawner)
     {

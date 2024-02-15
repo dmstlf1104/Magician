@@ -33,7 +33,7 @@ public class Status
 [System.Serializable]
 public class UserData
 {
-    //public Status Stat; 유물 스탯 더하기용
+    public Status Stat; //유물 스탯 더하기용
     public int gold;
     public List<Unit> Inven = new List<Unit>();
     public List<Unit> SellUnits = new List<Unit>();
