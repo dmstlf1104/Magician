@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 [System.Serializable]
@@ -34,7 +35,7 @@ public class UserData
 {
     //public Status Stat; 유물 스탯 더하기용
     public int gold;
-    public List<Unit> Inventory = new List<Unit>();
+    public List<Unit> Inven = new List<Unit>();
     public List<Unit> SellUnits = new List<Unit>();
     public List<Relic> OwnedRelics = new List<Relic>();
     public List<EvolutionUnit> EvolutionUnits = new List<EvolutionUnit>();
@@ -82,9 +83,7 @@ public class ShopManager : MonoBehaviour
     private void Awake()
     {
         if (Instance == null)
-            Instance = this;
-        else
-            Destroy(gameObject);
+            Instance = this;        
     }
 
     private void Start()
@@ -98,5 +97,10 @@ public class ShopManager : MonoBehaviour
         this.selectEvolutionUnit = selectEvolutionUnit;
 
         Price.text = selectEvolutionUnit.Data.Price.ToString();
+    }
+
+    public void SceneChange()
+    {
+        SceneManager.LoadScene("UnitManagerScene");
     }
 }

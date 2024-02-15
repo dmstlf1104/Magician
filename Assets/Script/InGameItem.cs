@@ -9,7 +9,7 @@ public class InGameItem : MonoBehaviour
     UnitManagement unitManagement;
 
     public UsedItemSoltUI[] usedUISlots;
-    public ItemSlot[] usedSlots;
+    public Unit[] usedSlots;
 
     public bool itemSet;
 
@@ -23,10 +23,10 @@ public class InGameItem : MonoBehaviour
     void Start()
     {
         unitManagement = UnitManagement.instance;
-        usedSlots = new ItemSlot[usedUISlots.Length];
+        usedSlots = new Unit[usedUISlots.Length];
         for (int i = 0; i < usedSlots.Length; i++)
         {
-            usedSlots[i] = new ItemSlot();
+            usedSlots[i] = new Unit();
             usedUISlots[i].index = i;
             usedUISlots[i].Clear();
         }
@@ -39,8 +39,8 @@ public class InGameItem : MonoBehaviour
         {
             if (unitManagement.usedSlots[i] != null && unitManagement.usedUISlots[i]!= null)
             {
-                usedSlots[i].item = unitManagement.usedSlots[i].item;
-                if (usedSlots[i].item != null)
+                usedSlots[i].Data = unitManagement.usedSlots[i].Data;
+                if (usedSlots[i].Data != null)
                     usedUISlots[i].Set(unitManagement.usedSlots[i]);
                 else
                     usedUISlots[i].Clear();
@@ -50,7 +50,7 @@ public class InGameItem : MonoBehaviour
 
     public void OnItemSet(int index)
     {
-        if (usedSlots[index].item == null)
+        if (usedSlots[index].Data == null)
             return;
         
     }
