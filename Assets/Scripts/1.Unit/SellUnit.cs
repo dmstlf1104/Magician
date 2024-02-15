@@ -23,12 +23,14 @@ public class SellUnit : MonoBehaviour
     private ShopManager shopManager;
     private UnitManagement unitManagement;    
     private Inventory inventory;
+    private ItemObject itemObject;
 
     private void Awake()
     {
         shopManager = ShopManager.Instance;
         unitManagement = FindObjectOfType<UnitManagement>();
         inventory = FindObjectOfType<Inventory>();
+        itemObject = FindObjectOfType<ItemObject>();
     }
 
     public void InitU(Unit unit)
@@ -58,7 +60,7 @@ public class SellUnit : MonoBehaviour
             shopManager.User.gold -= unit.Data.Price;
             buyCompletePanel.SetActive(true);
             shopManager.PlayerGold.text = shopManager.User.gold.ToString();
-            shopManager.User.Inven.Add(unit);                        
+            itemObject.OnAddItem();                       
         }
         else
         {

@@ -86,12 +86,12 @@ public class UnitManagement : MonoBehaviour
         ClearSelectedItemWindow();
     }
 
-    public void AddItem(UnitData item)
+    public void AddItem(Unit item)
     {
         Unit emptySlot = GetEmptySlot();
         if (emptySlot != null)
         {
-            emptySlot.Data = item;
+            emptySlot = item;
             UpdateUI();
             return;
         }

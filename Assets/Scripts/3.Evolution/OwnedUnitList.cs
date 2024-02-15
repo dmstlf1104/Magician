@@ -14,7 +14,7 @@ public class OwnedUnitList : MonoBehaviour
     }
     void InitOUList()
     {
-        foreach (Unit unit in ShopManager.Instance.User.SellUnits)
+        foreach (Unit unit in ShopManager.Instance.User.Inven)
         {
             OwnedUnit ownedUnit = Instantiate(ownedItem, content).GetComponent<OwnedUnit>();
             ownedUnit.InitOU(unit);

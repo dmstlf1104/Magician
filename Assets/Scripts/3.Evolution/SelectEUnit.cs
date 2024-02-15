@@ -15,6 +15,7 @@ public class SelectEUnit : MonoBehaviour
     [SerializeField] private Button selectBtn;    
 
     private SelectEvolutionUnit selectEvolutionUnit;
+    Unit unit;
     
 
     bool isPanelActive;
@@ -32,11 +33,20 @@ public class SelectEUnit : MonoBehaviour
         thumbnail.sprite = selectEvolutionUnit.Data.ObjectSprite;
         detailExBtn.onClick.AddListener(OndetailExPanel);
         selectBtn.onClick.AddListener(() => ShopManager.Instance.PriceValue(selectEvolutionUnit));
+        //ShopManager.Instance.EvolutionBtn.onClick.AddListener();
     }
 
     void OndetailExPanel()
     {
         isPanelActive = !isPanelActive;
         detailExPanel.SetActive(isPanelActive);
-    }    
+    }  
+    
+    void Evolution(Unit unit, SelectEvolutionUnit selectEvolutionUnit)
+    {
+        this.unit = unit;
+        this.selectEvolutionUnit = selectEvolutionUnit;
+
+        
+    }
 }

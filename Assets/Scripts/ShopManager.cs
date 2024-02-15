@@ -74,6 +74,7 @@ public class ShopManager : MonoBehaviour
     public TMP_Text PlayerGold;
     public GameObject UnitNotMoney;
     public GameObject RelicNotMoney;
+    public Button EvolutionBtn;
 
     public static ShopManager Instance;
     private SelectEvolutionUnit selectEvolutionUnit;
