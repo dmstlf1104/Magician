@@ -56,13 +56,13 @@ public class UnitManagement : MonoBehaviour
         instance = this;        
         shopManager = FindObjectOfType<ShopManager>();
         slots = shopManager.User.Inven.ToArray();
+        int i = 0;
         foreach(Unit unit in shopManager.User.Inven)
         {
-            for(int i = 0; i < shopManager.User.Inven.Count; i++)
-            {
-                slots[i] = unit;
-            }            
+            slots[i] = unit;
+            i++;
         }
+        UpdateUI();
     }
 
     private void Start()
@@ -82,7 +82,7 @@ public class UnitManagement : MonoBehaviour
             usedUISlots[i].index = i;
             usedUISlots[i].Clear();
         }
-        FireBall.OnAddItem();
+        //FireBall.OnAddItem();
         ClearSelectedItemWindow();
     }
 

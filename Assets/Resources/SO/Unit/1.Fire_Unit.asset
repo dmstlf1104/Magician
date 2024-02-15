@@ -23,9 +23,10 @@ MonoBehaviour:
     msp: 0
     slow: 0
     stun: 0
-    range: 2
+    range: 4
   Price: 2000
   FireType: 1
   FrostType: 0
   EarthType: 0
   UnitIndex: 0
+  Equip: 0

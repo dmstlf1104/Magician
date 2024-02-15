@@ -99,9 +99,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletTilePrefab: {fileID: 6820880158935081697, guid: 5bb12f2d5210fdd4b8463526e2cd5846, type: 3}
+  unitData:
+    IsPurchase: 0
+    Data: {fileID: 11400000, guid: 236e3680030a78440b9586b0a0712f3d, type: 2}
   spawnPoint: {fileID: 2485490261878242632}
-  attackRate: 0.5
-  attackRange: 4
+  attackRate: 0
+  attackRange: 0
 --- !u!1 &6942085509215743079
 GameObject:
   m_ObjectHideFlags: 0

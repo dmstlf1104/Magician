@@ -9,13 +9,19 @@ public enum AttackState { SearchTarget = 0, AttackToTarget }
 public class TowerAttack : MonoBehaviour
 {
     [SerializeField] private GameObject bulletTilePrefab;
+    [SerializeField] private Unit unitData;
     [SerializeField] private Transform spawnPoint;
-    [SerializeField] private float attackRate = 0.5f; //공속
-    [SerializeField] private float attackRange = 2.0f; //사거리
+    [SerializeField] private float attackRate; //공속
+    [SerializeField] private float attackRange; //사거리
     private AttackState attackState = AttackState.SearchTarget; //무기상태
     private Transform attackTarget = null; //공격대상
     private EnemySpawner enemySpawner; //적 정보
-
+    
+    private void Awake()
+    {
+        attackRate = unitData.Data.Stat.atkS;
+        attackRange = unitData.Data.Stat.range;
+    }
     public void Setup(EnemySpawner enemySpawner)
     {
         this.enemySpawner = enemySpawner;
