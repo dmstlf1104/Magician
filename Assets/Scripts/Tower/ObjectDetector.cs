@@ -5,6 +5,7 @@ using UnityEngine;
 public class ObjectDetector : MonoBehaviour
 {
     [SerializeField] private TowerSpawner towerSpawner;
+    [SerializeField] private TowerDataViewer towerDataViewr;
     private Camera mainCamera;
     private Ray ray;
     private RaycastHit hit;
@@ -29,6 +30,10 @@ public class ObjectDetector : MonoBehaviour
                 {
                     //타워 생성
                     towerSpawner.SpawnTower(hit.transform);
+                }
+                else if (hit.transform.CompareTag("Tower"))
+                {
+                    towerDataViewr.OnPanel(hit.transform);
                 }
             }
             
