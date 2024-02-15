@@ -29,3 +29,5 @@ MonoBehaviour:
   FrostType: 1
   EarthType: 0
   UnitIndex: 1
+  Equip: 0
+  EvolutionTrue: 0

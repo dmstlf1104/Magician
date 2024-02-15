@@ -13,4 +13,5 @@ public class EvolutionUnitData : ScriptableObject
     public bool FireType;
     public bool FrostType;
     public bool EarthType;
+    public bool EvolutionTrue;
 }

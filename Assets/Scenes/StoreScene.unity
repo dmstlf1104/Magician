@@ -154,13 +154,14 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1701954086}
+  - {fileID: 1270024887}
   m_Father: {fileID: 1746367161}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 700, y: 450}
-  m_SizeDelta: {x: 400, y: 100}
+  m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &156108519
 MonoBehaviour:
@@ -1382,41 +1383,38 @@ MonoBehaviour:
   PlayerGold: {fileID: 1701954087}
   UnitNotMoney: {fileID: 1728685780}
   RelicNotMoney: {fileID: 1725845500}
-  EvolutionBtn: {fileID: 0}
+  EvolutionBtn: {fileID: 288057301}
   User:
+    Stat:
+      atk: 0
+      atkS: 0
+      crt: 0
+      def: 0
+      msp: 0
+      slow: 0
+      stun: 0
+      range: 0
     gold: 0
     Inven: []
     SellUnits:
-    - IsPurchase: 0
-      Data: {fileID: 11400000, guid: 236e3680030a78440b9586b0a0712f3d, type: 2}
-    - IsPurchase: 0
-      Data: {fileID: 11400000, guid: a78e42e210c6d32489d25e5ddc1b5c45, type: 2}
-    - IsPurchase: 0
-      Data: {fileID: 11400000, guid: 5da9fb9e9f272c14191ef4a6433f4a34, type: 2}
-    - IsPurchase: 0
-      Data: {fileID: 11400000, guid: 762739cf6c21bc44c83b648c3c250e16, type: 2}
-    - IsPurchase: 0
-      Data: {fileID: 11400000, guid: 4233d0a3464ee064391b52c93323614a, type: 2}
-    - IsPurchase: 0
-      Data: {fileID: 11400000, guid: 74c795f63cade0f42a37fe932c8426dd, type: 2}
+    - Data: {fileID: 11400000, guid: 236e3680030a78440b9586b0a0712f3d, type: 2}
+    - Data: {fileID: 11400000, guid: a78e42e210c6d32489d25e5ddc1b5c45, type: 2}
+    - Data: {fileID: 11400000, guid: 5da9fb9e9f272c14191ef4a6433f4a34, type: 2}
+    - Data: {fileID: 11400000, guid: 762739cf6c21bc44c83b648c3c250e16, type: 2}
+    - Data: {fileID: 11400000, guid: 4233d0a3464ee064391b52c93323614a, type: 2}
+    - Data: {fileID: 11400000, guid: 74c795f63cade0f42a37fe932c8426dd, type: 2}
     OwnedRelics:
-    - IsPurchase: 0
-      Data: {fileID: 11400000, guid: 6f28368ccd33fcd4daac55bac8d3cce4, type: 2}
+    - Data: {fileID: 11400000, guid: 6f28368ccd33fcd4daac55bac8d3cce4, type: 2}
+    - Data: {fileID: 11400000, guid: f0c09251b338b624c8482605b4fb4a9d, type: 2}
+    - Data: {fileID: 11400000, guid: f24ae2ec440bd3a42991755c4143be77, type: 2}
+    - Data: {fileID: 11400000, guid: 396fcb5751cbdbc42b9b428d6f5f4066, type: 2}
+    - Data: {fileID: 11400000, guid: 6e69d52f405c780409fcd70e88bdcf61, type: 2}
+    - Data: {fileID: 11400000, guid: a8f8c2fc0e3d7944fa7efb66536ecacd, type: 2}
     EvolutionUnits:
     - EUnits:
-      - IsPurchase: 0
-        Data: {fileID: 11400000, guid: 0d4f5738f2da06741bc4c224b2b1ec59, type: 2}
-      - IsPurchase: 0
-        Data: {fileID: 11400000, guid: fc8f04e2e09be754297593db0364c7d8, type: 2}
-      - IsPurchase: 0
-        Data: {fileID: 11400000, guid: a597c08aa788c6846902054143dfae27, type: 2}
-    - EUnits:
-      - IsPurchase: 0
-        Data: {fileID: 11400000, guid: a4165282f947ee748a2ddfd86bec693d, type: 2}
-      - IsPurchase: 0
-        Data: {fileID: 11400000, guid: a7666e903edd5a34b8ffcd364c408a77, type: 2}
-      - IsPurchase: 0
-        Data: {fileID: 11400000, guid: 5f8b1ff121ca3cd48888679a8c25934a, type: 2}
+      - Data: {fileID: 11400000, guid: 6d3cf5153160449419e2f45598285d7d, type: 2}
+      - Data: {fileID: 11400000, guid: cc3113c074c1aa841b342e0cce6d5dd8, type: 2}
+      - Data: {fileID: 11400000, guid: 7b3e488a10471ec4997460aa13d02862, type: 2}
 --- !u!114 &600347682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2751,6 +2749,82 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1270024886
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1270024887}
+  - component: {fileID: 1270024889}
+  - component: {fileID: 1270024888}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1270024887
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1270024886}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 156108518}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -150, y: 0}
+  m_SizeDelta: {x: 170, y: 170}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1270024888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1270024886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 0fb64fb87fb21f34aa0d8f1f722af4b0, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1270024889
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1270024886}
+  m_CullTransparentMesh: 1
 --- !u!1 &1298736710
 GameObject:
   m_ObjectHideFlags: 0
@@ -4451,7 +4525,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 60, y: -5}
+  m_AnchoredPosition: {x: 30, y: -5}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1701954087

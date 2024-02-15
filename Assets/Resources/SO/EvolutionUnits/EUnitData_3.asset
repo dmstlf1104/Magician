@@ -9,23 +9,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de1a8151fe51fdc418c080a8cff5b80a, type: 3}
-  m_Name: RelicData_5
+  m_Script: {fileID: 11500000, guid: 8b37d70243ed5ea429a2e3dd0f903ce4, type: 3}
+  m_Name: EUnitData_3
   m_EditorClassIdentifier: 
-  Name: "\uC0AC\uB0E5\uAFBC\uC758 \uC11D\uAD81"
-  detailEx: "\uAE30\uBB3C\uB4E4\uC758 \uACF5\uACA9\uB825 +5 \uC0AC\uAC70\uB9AC +0.5
-    \uACF5\uACA9\uC18D\uB3C4 +0.1"
-  ObjectSprite: {fileID: 21300000, guid: 6aa08ad34f2e9d248ba3e5efe3b915f4, type: 3}
+  Name: "\uBD88 \uB9C8\uBC95 \uC9C4\uD654 3"
+  detailEx: "\uC0C1\uC138"
+  ObjectSprite: {fileID: 21300000, guid: 57027a5aeba79334096efdf9ee686866, type: 3}
   Stat:
-    atk: 5
-    atkS: 0.1
+    atk: 0
+    atkS: 0
     crt: 0
     def: 0
     msp: 0
     slow: 0
     stun: 0
-    range: 0.5
-  Price: 6000
+    range: 0
+  Price: 20000
   FireType: 1
   FrostType: 0
   EarthType: 0
+  UnitIndex: 0
+  Equip: 0
+  EvolutionTrue: 1

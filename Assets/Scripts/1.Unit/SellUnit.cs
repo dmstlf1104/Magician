@@ -60,7 +60,7 @@ public class SellUnit : MonoBehaviour
             shopManager.User.gold -= unit.Data.Price;
             buyCompletePanel.SetActive(true);
             shopManager.PlayerGold.text = shopManager.User.gold.ToString();
-            shopManager.User.Inven.Add(unit);                    
+            shopManager.User.Inven.Add(unit);                             
         }
         else
         {

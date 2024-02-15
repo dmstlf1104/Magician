@@ -7,17 +7,16 @@ public class SelectEUnitList : MonoBehaviour
     [Header("User SelectEUnit")]
     [SerializeField] private Transform charSelectPanel;
     [SerializeField] private GameObject charSelectObject;
+       
+    private Unit unit;        
 
-    private EvolutionUnit evolutionUnit;    
-    private Unit unit;
-
-    public void InitEU(Unit unit)
+    public void InitEUList(Unit unit)
     {
-        this.unit = unit;        
+        this.unit = unit;            
 
         if (charSelectPanel.childCount == 0)
         {            
-            foreach (SelectEvolutionUnit selectEvolutionUnit in ShopManager.Instance.User.EvolutionUnits[unit.Data.UnitIndex].EUnits)
+            foreach (Unit selectEvolutionUnit in ShopManager.Instance.User.EvolutionUnits[unit.Data.UnitIndex].EUnits)
             {
                 SelectEUnit selectEUnit = Instantiate(charSelectObject, charSelectPanel).GetComponent<SelectEUnit>();
                 selectEUnit.InitEU(selectEvolutionUnit);                
@@ -30,7 +29,7 @@ public class SelectEUnitList : MonoBehaviour
                 Destroy(child.gameObject);
             }
 
-            foreach (SelectEvolutionUnit selectEvolutionUnit in ShopManager.Instance.User.EvolutionUnits[unit.Data.UnitIndex].EUnits)
+            foreach (Unit selectEvolutionUnit in ShopManager.Instance.User.EvolutionUnits[unit.Data.UnitIndex].EUnits)
             {
                 SelectEUnit selectEUnit = Instantiate(charSelectObject, charSelectPanel).GetComponent<SelectEUnit>();
                 selectEUnit.InitEU(selectEvolutionUnit);

@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.UI.CanvasScaler;
 
 public class SelectEUnit : MonoBehaviour
 {
@@ -12,41 +14,58 @@ public class SelectEUnit : MonoBehaviour
     [SerializeField] private Button detailExBtn;    
     [SerializeField] private TMP_Text detailExTxt;
     [SerializeField] private GameObject detailExPanel;
-    [SerializeField] private Button selectBtn;    
+    [SerializeField] private Button selectBtn;
 
-    private SelectEvolutionUnit selectEvolutionUnit;
-    Unit unit;
-    
+    private Unit unit;  
 
-    bool isPanelActive;
+    bool isEtrue;    
+    bool isPanelActive;    
 
-    private void Awake()
-    {
-        ShopManager.Instance = FindObjectOfType<ShopManager>();
-    }
-
-    public void InitEU(SelectEvolutionUnit selectEvolutionUnit)
-    {
-        this.selectEvolutionUnit = selectEvolutionUnit;
-
-        objectName.text = selectEvolutionUnit.Data.Name;
-        thumbnail.sprite = selectEvolutionUnit.Data.ObjectSprite;
+    public void InitEU(Unit unit)
+    {        
+        this.unit = unit;
+        
+        objectName.text = unit.Data.Name;
+        thumbnail.sprite = unit.Data.ObjectSprite;
         detailExBtn.onClick.AddListener(OndetailExPanel);
-        selectBtn.onClick.AddListener(() => ShopManager.Instance.PriceValue(selectEvolutionUnit));
-        //ShopManager.Instance.EvolutionBtn.onClick.AddListener();
+        selectBtn.onClick.AddListener(() => ShopManager.Instance.PriceValue(unit));
+        selectBtn.onClick.AddListener(() => Etrue(unit));        
+        ShopManager.Instance.EvolutionBtn.onClick.AddListener(() => Evolution(unit));
     }
 
     void OndetailExPanel()
     {
         isPanelActive = !isPanelActive;
         detailExPanel.SetActive(isPanelActive);
-    }  
-    
-    void Evolution(Unit unit, SelectEvolutionUnit selectEvolutionUnit)
+    }
+
+    void Evolution(Unit unit)
+    {
+        this.unit = ShopManager.Instance.User.EvolutionUnits[unit.Data.UnitIndex].EUnits[unit.Data.UnitIndex];
+
+        if (ShopManager.Instance.User.gold >= unit.Data.Price && unit.Data.EvolutionTrue == true)
+        {
+            ShopManager.Instance.User.gold -= unit.Data.Price;
+            ShopManager.Instance.User.Inven.Add(unit);
+        }
+        else
+        {
+            return;
+        }
+    }
+
+    void Etrue(Unit unit)
     {
         this.unit = unit;
-        this.selectEvolutionUnit = selectEvolutionUnit;
 
-        
+        isEtrue = !isEtrue;
+        if (isEtrue)
+        {
+            unit.Data.EvolutionTrue = true;
+        }
+        else if (!isEtrue)
+        {
+            unit.Data.EvolutionTrue = false;
+        }
     }
 }

@@ -43,29 +43,20 @@ public class UserData
 
 [System.Serializable]
 public class Unit
-{
-    public bool IsPurchase;    
+{      
     public UnitData Data;
 }
 
 [System.Serializable]
 public class Relic
-{
-    public bool IsPurchase;
+{    
     public RelicData Data;
 }
 
 [System.Serializable]
 public class EvolutionUnit
 {    
-    public List<SelectEvolutionUnit> EUnits = new List<SelectEvolutionUnit>();
-}
-
-[System.Serializable]
-public class SelectEvolutionUnit
-{
-    public bool IsPurchase;
-    public EvolutionUnitData Data;
+    public List<Unit> EUnits = new List<Unit>();
 }
 
 public class ShopManager : MonoBehaviour
@@ -76,10 +67,10 @@ public class ShopManager : MonoBehaviour
     public GameObject RelicNotMoney;
     public Button EvolutionBtn;
 
-    public static ShopManager Instance;
-    private SelectEvolutionUnit selectEvolutionUnit;
+    public static ShopManager Instance;    
 
-    public UserData User;        
+    public UserData User;
+    Unit unit;
 
     private void Awake()
     {
@@ -93,11 +84,11 @@ public class ShopManager : MonoBehaviour
         PlayerGold.text = User.gold.ToString();
     }
 
-    public void PriceValue(SelectEvolutionUnit selectEvolutionUnit)
+    public void PriceValue(Unit unit)
     {
-        this.selectEvolutionUnit = selectEvolutionUnit;
+        this.unit = unit;
 
-        Price.text = selectEvolutionUnit.Data.Price.ToString();
+        Price.text = unit.Data.Price.ToString();
     }
 
     public void SceneChange()
