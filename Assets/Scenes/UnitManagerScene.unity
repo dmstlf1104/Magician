@@ -3199,6 +3199,7 @@ MonoBehaviour:
   - {fileID: 177548110}
   - {fileID: 450264991}
   - {fileID: 849013511}
+  usedSlots: []
   itemSet: 0
 --- !u!1001 &892361925
 PrefabInstance:
@@ -4488,12 +4489,14 @@ MonoBehaviour:
   - {fileID: 925313827}
   - {fileID: 1856044146}
   - {fileID: 2127530332}
+  slots: []
   usedUISlots:
   - {fileID: 8903442615819073743}
   - {fileID: 1259325370}
   - {fileID: 1869024637}
   - {fileID: 1872658918}
   - {fileID: 1845254049}
+  usedSlots: []
   selectedItemName: {fileID: 63831879}
   selectedItemDescription: {fileID: 316012930}
   selectedItemAtk: {fileID: 748672215}
