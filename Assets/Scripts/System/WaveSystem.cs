@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class WaveSystem : MonoBehaviour
 {
@@ -22,7 +24,7 @@ public class WaveSystem : MonoBehaviour
         else if(EnemySpawner.EnemyList.Count == 0 && currentWaveIndex >= waves.Length - 1)
         {
             Victory = true;
-        }
+        }        
     }
 } 
 [System.Serializable] public struct Wave

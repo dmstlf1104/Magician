@@ -9,23 +9,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b37d70243ed5ea429a2e3dd0f903ce4, type: 3}
-  m_Name: 4.Fire_Unit2
+  m_Script: {fileID: 11500000, guid: de1a8151fe51fdc418c080a8cff5b80a, type: 3}
+  m_Name: RelicData_4
   m_EditorClassIdentifier: 
-  Name: "\uC6A9\uC758 \uC228\uACB0"
-  detailEx: "\uC2A4\uD50C\uB798\uC26C \uB370\uBBF8\uC9C0?"
-  ObjectSprite: {fileID: 21300000, guid: a64aa40e86237574f8d171283c2bb6b3, type: 3}
+  Name: "\uB9AC\uCE58\uC758 \uC644\uB4DC"
+  detailEx: "\uAE30\uBB3C\uB4E4\uC758 \uACF5\uACA9\uB825 +15"
+  ObjectSprite: {fileID: 21300000, guid: aa3f6611bfe6942c6b2abde2b6c53bb4, type: 3}
   Stat:
-    atk: 90
-    atkS: 0.5
-    crt: 5
+    atk: 15
+    atkS: 0
+    crt: 0
     def: 0
     msp: 0
     slow: 0
     stun: 0
-    range: 2
+    range: 0
   Price: 5000
-  FireType: 1
-  FrostType: 0
+  FireType: 0
+  FrostType: 1
   EarthType: 0
-  UnitIndex: 3

@@ -100,7 +100,7 @@ public class TowerAttack : MonoBehaviour
                 break;
             }
             // 공속 대기
-            yield return new WaitForSeconds(towerTemplate.weapon[level].rate);
+            yield return new WaitForSeconds(towerTemplate.weapon[level].rate - ShopManager.Instance.User.Stat.atkS);
 
             SpawnBulletTile();
         }
@@ -108,7 +108,7 @@ public class TowerAttack : MonoBehaviour
     private void SpawnBulletTile()
     {
         GameObject clone = Instantiate(bulletTilePrefab, spawnPoint.position, Quaternion.identity);
-        clone.GetComponent<Bullet>().Setup(attackTarget, towerTemplate.weapon[level].damage);
+        clone.GetComponent<Bullet>().Setup(attackTarget, towerTemplate.weapon[level].damage + ShopManager.Instance.User.Stat.atk);
         //Instantiate(bulletTilePrefab, spawnPoint.position, Quaternion.identity);
     }
     
@@ -186,7 +186,7 @@ public class TowerAttack : MonoBehaviour
         }
 
         float distance = Vector3.Distance(attackTarget.position, transform.position);
-        if(distance > towerTemplate.weapon[level].range)
+        if(distance > towerTemplate.weapon[level].range + ShopManager.Instance.User.Stat.range)
         {
             attackTarget = null;
             return false;

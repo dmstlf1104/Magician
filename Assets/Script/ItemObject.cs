@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class ItemObject : MonoBehaviour
 {
-    public ItemData item;
-
+    Unit item;
     public void OnAddItem()
     {
         UnitManagement.instance.AddItem(item);

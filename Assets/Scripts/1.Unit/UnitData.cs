@@ -15,4 +15,6 @@ public class UnitData : ScriptableObject
     public bool FrostType;
     public bool EarthType;
     public int UnitIndex;
+    public bool Equip;
+    public bool EvolutionTrue;
 }

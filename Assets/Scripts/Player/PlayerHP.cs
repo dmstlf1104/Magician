@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerHP : MonoBehaviour
@@ -26,7 +27,7 @@ public class PlayerHP : MonoBehaviour
         if(currentHP <= 0)
         {
             defeat = true;
-        }
+        }        
     }
 
     private IEnumerator HitAlphaAnimation()

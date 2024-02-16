@@ -22,20 +22,15 @@ public class victoryCheck : MonoBehaviour
         playerHP = GameObject.Find("PlayerStats").GetComponent<PlayerHP>();
         if (waveSystem.Victory == true)
         {
-            Win();
+            Reward();
         }
         else if (playerHP.defeat == true)
         {
-            Defeat();
+            Reward();
         }
     }
-    private void Win()
+    private void Reward()
     {
-        Debug.Log("½Â¸®");
-    }
-
-    private void Defeat()
-    {
-        SceneManager.LoadScene("StageScene");
-    }
+        SceneManager.LoadScene("RewardScene");
+    }    
 }
