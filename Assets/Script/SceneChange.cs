@@ -14,4 +14,13 @@ public class SceneChange : MonoBehaviour
     {
         SceneManager.LoadScene("StoreScene");
     }
+    public void nextUnitMangement()
+    {
+        SceneManager.LoadScene("UnitManagerScene");
+    }
+
+    public void nextEnd()
+    {
+        Application.Quit();
+    }
 }
