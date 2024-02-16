@@ -21,9 +21,9 @@ using static UnityEditor.Progress;
 public class UnitManagement : MonoBehaviour
 {
     public ItemSlotUI[] uiSlots;
-    public Unit[] slots;    
+    public Unit[] slots;
     public UsedItemSoltUI[] usedUISlots;
-    public Unit[] usedSlots;    
+    public Unit[] usedSlots;
 
     [Header("Selected Item")]
     private Unit selectedItem;
@@ -50,14 +50,14 @@ public class UnitManagement : MonoBehaviour
     public static UnitManagement instance;
     Inventory inventory;
     ShopManager shopManager;
-    
+
     void Awake()
     {
-        instance = this;        
+        instance = this;
         shopManager = FindObjectOfType<ShopManager>();
         slots = shopManager.User.Inven.ToArray();
         int i = 0;
-        foreach(Unit unit in shopManager.User.Inven)
+        foreach (Unit unit in shopManager.User.Inven)
         {
             slots[i] = unit;
             i++;
@@ -68,7 +68,7 @@ public class UnitManagement : MonoBehaviour
     private void Start()
     {
         //slots = new Unit[uiSlots.Length];
-        usedSlots = new Unit[usedUISlots.Length];        
+        usedSlots = new Unit[usedUISlots.Length];
 
         for (int i = 0; i < slots.Length; i++)
         {
@@ -98,7 +98,7 @@ public class UnitManagement : MonoBehaviour
     }
 
     void UpdateUI()
-    {        
+    {
         for (int i = 0; i < slots.Length; i++)
         {
             if (slots[i].Data != null)
@@ -159,7 +159,7 @@ public class UnitManagement : MonoBehaviour
     public void OnUseButton()
     {
         slots[selectedItemIndex].Data.Equip = true;
-        for(int i=0;i<usedSlots.Length;i++)
+        for (int i = 0; i < usedSlots.Length; i++)
         {
             if (usedSlots[i].Data == null)
             {

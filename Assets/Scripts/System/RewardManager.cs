@@ -3,17 +3,22 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class RewardManager : MonoBehaviour
 {
     [SerializeField] private GameObject GameClear;
     [SerializeField] private GameObject GameOver;
     [SerializeField] private TMP_Text EarnGold;
+
+    WaveSystem waveSystem;
+    PlayerHP playerHP;
+
     int earnGold;
 
     private void Start()
     {
-        if(gameObject == true)
+        if(waveSystem.Victory == true)
         {
             GameClear.SetActive(true);
             GameOver.SetActive(false);
@@ -21,7 +26,7 @@ public class RewardManager : MonoBehaviour
             EarnGold.text = earnGold.ToString();
             ShopManager.Instance.User.gold += earnGold;
         }
-        else if(gameObject == false)
+        else if(playerHP.defeat == false)
         {
             GameClear.SetActive(false);
             GameOver.SetActive(true);
