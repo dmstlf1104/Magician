@@ -1166,7 +1166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e59a2cc30a4e23d4eaa2c0bbd59aab2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentMana: 200
+  currentMana: 1000
 --- !u!4 &209790497 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3013397718555841825, guid: 84b49a6c8b2d7e7488caf229defbcdb1, type: 3}

@@ -11,14 +11,6 @@ public class WaveSystem : MonoBehaviour
 
     public int CurrentWave => currentWaveIndex + 1;
     public int MaxWave => waves.Length;
-
-    public void Update()
-    {
-        if (EnemySpawner.EnemyList.Count == 0 && currentWaveIndex >= waves.Length - 1)
-        {
-            Victory = true;
-        }
-    }
     public void StartWave()
     {
         //맵에 적이없고 wave가 남아있으면
@@ -26,6 +18,10 @@ public class WaveSystem : MonoBehaviour
         {
             currentWaveIndex++;
             EnemySpawner.StartWave(waves[currentWaveIndex]);
+        }
+        else if(EnemySpawner.EnemyList.Count == 0 && currentWaveIndex >= waves.Length - 1)
+        {
+            Victory = true;
         }
     }
 } 
