@@ -9,7 +9,7 @@ public class RewardManager : MonoBehaviour
     [SerializeField] private GameObject GameClear;
     [SerializeField] private GameObject GameOver;
     [SerializeField] private TMP_Text EarnGold;
-    public int earnGold;
+    int earnGold;
 
     private void Start()
     {
@@ -19,6 +19,7 @@ public class RewardManager : MonoBehaviour
             GameOver.SetActive(false);
             earnGold = 1000;
             EarnGold.text = earnGold.ToString();
+            ShopManager.Instance.User.gold += earnGold;
         }
         else if(gameObject == false)
         {
@@ -26,6 +27,7 @@ public class RewardManager : MonoBehaviour
             GameOver.SetActive(true);
             earnGold = 100;
             EarnGold.text = earnGold.ToString();
+            ShopManager.Instance.User.gold += earnGold;
         }
     }
     public void MainSceneLoad()

@@ -152,6 +152,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9022628cfa2a8c84eb9601a044a2c293, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameClear: {fileID: 521204884}
+  GameOver: {fileID: 1824399048}
+  EarnGold: {fileID: 583672547}
 --- !u!4 &286441150
 Transform:
   m_ObjectHideFlags: 0

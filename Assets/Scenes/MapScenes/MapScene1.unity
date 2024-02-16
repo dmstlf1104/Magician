@@ -216,6 +216,7 @@ MonoBehaviour:
     - {fileID: 267082890673095583, guid: 902cbca24b5ef1942bbad530097df85c, type: 3}
     - {fileID: 267082890673095583, guid: 786a102049af5c246bcebeba5e701c9f, type: 3}
   EnemySpawner: {fileID: 45270084}
+  Victory: 0
 --- !u!1001 &50308959
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1137,6 +1138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 20
   imageScreen: {fileID: 370409113}
+  defeat: 0
 --- !u!4 &175563115
 Transform:
   m_ObjectHideFlags: 0
