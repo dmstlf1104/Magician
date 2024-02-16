@@ -27,7 +27,6 @@ public class SliderPositionAutoSetter : MonoBehaviour
         }
 
         //오브젝트의 위치가 갱신된 이후에 Slider UI도 같이 위치를 설정 하기위해 LateUpdate()에서 호출
-
         //오브젝트의 월드 좌표 기준으로 화면에서 좌표값을 구하기
         Vector3 screenPosition = Camera.main.WorldToScreenPoint(targetTransform.position);
         //화면내에서 좌표+distance 만큼 떨어진 위치를 slider의 위치로 설정

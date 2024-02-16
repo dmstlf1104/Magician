@@ -5,15 +5,18 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.XR;
 
-public enum AttackState { SearchTarget = 0, AttackToTarget }
+public enum WeaponType {Cannon = 0,}
+public enum AttackState { SearchTarget = 0, TryAttackCannon, }
 public class TowerAttack : MonoBehaviour
 {
+    [Header("Commons")]
     [SerializeField] private TowerTemplate towerTemplate; //타워정보
-    [SerializeField] private GameObject bulletTilePrefab;
-    [SerializeField] private Transform spawnPoint;
-    //[SerializeField] private float attackRate = 0.5f; //공속
-    //[SerializeField] private float attackRange = 2.0f; //사거리
-    //[SerializeField] private int attackDamage = 1; //공격력
+    [SerializeField] private Transform spawnPoint; //발사체 위치
+    [SerializeField] private WeaponType weaponType; //무기 속성
+
+    [Header("Cannon")]
+    [SerializeField] private GameObject bulletTilePrefab; //발사체 프리팹
+
     private int level = 0; //레벨
     private AttackState attackState = AttackState.SearchTarget; //무기상태
     private Transform attackTarget = null; //공격대상
@@ -66,41 +69,21 @@ public class TowerAttack : MonoBehaviour
     {
         while (true)
         {
-            //제일 가까이 있는적 찾기 위해 최초거리 크게
-            float closestDistSqr = Mathf.Infinity;
-            //enemylist에 있는 맵에 존재하는 모든적 검사
-            for(int i = 0; i < enemySpawner.EnemyList.Count; i++)
-            {
-                float distance = Vector3.Distance(enemySpawner.EnemyList[i].transform.position, transform.position);
-                //거리가 범위내에 있고 검사한 적보다 거리가 가까우면
-                if(distance <= towerTemplate.weapon[level].range && distance <= closestDistSqr)
-                {
-                    closestDistSqr = distance;
-                    attackTarget = enemySpawner.EnemyList[i].transform;
-                }
-            }
+            attackTarget = FindClosestAttackTarget();
+
             if(attackTarget != null)
             {
-                ChangeState(AttackState.AttackToTarget);
+                ChangeState(AttackState.TryAttackCannon);
             }
             yield return null;
         }
     }
-    private IEnumerator AttackToTarget()
+    private IEnumerator TryAttackCannon()
     {
         while(true)
         {
-            // target검사
-            if (attackTarget == null)
+            if(IsPossibleToAttackTarget() == false)
             {
-                ChangeState(AttackState.SearchTarget);
-                break;
-            }
-            //공격범위 안 검사
-            float distance = Vector3.Distance(attackTarget.position, transform.position);
-            if(distance > towerTemplate.weapon[level].range)
-            {
-                attackTarget = null;
                 ChangeState(AttackState.SearchTarget);
                 break;
             }
@@ -138,4 +121,39 @@ public class TowerAttack : MonoBehaviour
         ownerTile.IsBuildTower = false;
         Destroy(gameObject);
     }
+
+    private Transform FindClosestAttackTarget()
+    {
+        //제일 가까이있는 적찾기
+        float closestDistSqr = Mathf.Infinity;
+
+        for(int i = 0; i< enemySpawner.EnemyList.Count; ++i)
+        {
+            float distance = Vector3.Distance(enemySpawner.EnemyList[i].transform.position,transform.position);
+
+            if(distance < towerTemplate.weapon[level].range && distance <= closestDistSqr)
+            {
+                closestDistSqr = distance;
+                attackTarget = enemySpawner.EnemyList[i].transform;
+            }
+        }
+        return attackTarget;
+    }
+
+    private bool IsPossibleToAttackTarget()
+    {
+        if(attackTarget == null)
+        {
+            return false;
+        }
+
+        float distance = Vector3.Distance(attackTarget.position, transform.position);
+        if(distance > towerTemplate.weapon[level].range)
+        {
+            attackTarget = null;
+            return false;
+        }
+        return true;
+    }
+
 }

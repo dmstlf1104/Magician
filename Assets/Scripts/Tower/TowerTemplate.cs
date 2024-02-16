@@ -7,6 +7,7 @@ using UnityEngine;
 public class TowerTemplate : ScriptableObject
 {
     public GameObject towerPrefab;
+    public GameObject followTowerPrefab; //임시타워 프리팹
     public Weapon[] weapon;
 
     [System.Serializable]

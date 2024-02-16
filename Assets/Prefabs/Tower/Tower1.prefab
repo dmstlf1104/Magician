@@ -100,8 +100,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerTemplate: {fileID: 11400000, guid: aac7b03a05af7da4aa3188285459ec93, type: 2}
-  bulletTilePrefab: {fileID: 6820880158935081697, guid: 5bb12f2d5210fdd4b8463526e2cd5846, type: 3}
   spawnPoint: {fileID: 2485490261878242632}
+  weaponType: 0
+  bulletTilePrefab: {fileID: 6820880158935081697, guid: 5bb12f2d5210fdd4b8463526e2cd5846, type: 3}
 --- !u!65 &4636132736591159877
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -147,7 +148,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6942085509215743079}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.3, y: -0.3, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
