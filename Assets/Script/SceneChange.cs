@@ -24,4 +24,9 @@ public class SceneChange : MonoBehaviour
     {
         SceneManager.LoadScene("StageScene");
     }
+
+    public void unit()
+    {
+        SceneManager.LoadScene("UnitManagement");
+    }
 }
