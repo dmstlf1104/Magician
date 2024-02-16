@@ -13,22 +13,21 @@ using UnityEngine.XR;
 using static UnityEditor.Progress;
 
 
-//public class Unit
-//{
-//    public UnitData item;    
-//}
+public class ItemSlot
+{
+    public ItemData item;
+}
 
 public class UnitManagement : MonoBehaviour
 {
     public ItemSlotUI[] uiSlots;
-    public Unit[] slots;    
+    public ItemSlot[] slots;
     public UsedItemSoltUI[] usedUISlots;
-    public Unit[] usedSlots;    
+    public ItemSlot[] usedSlots;
 
     [Header("Selected Item")]
-    private Unit selectedItem;
+    private ItemSlot selectedItem;
     private int selectedItemIndex;
-    public Scene storeScene;
     public TextMeshProUGUI selectedItemName;
     public TextMeshProUGUI selectedItemDescription;
     public TextMeshProUGUI selectedItemAtk;
@@ -38,70 +37,54 @@ public class UnitManagement : MonoBehaviour
     public GameObject dropButton;
     public GameObject backButton;
 
-    public GameObject upgradeButton;
-    public GameObject speedUpgradeButton;
-    public GameObject atkUpgradeButton;
-    public GameObject cancelButton;
-
     public ItemObject FireBall;
 
     public GameObject BG;
 
     public static UnitManagement instance;
-    Inventory inventory;
-    ShopManager shopManager;
-    
+    // Start is called before the first frame update
     void Awake()
     {
-        instance = this;        
-        shopManager = FindObjectOfType<ShopManager>();
-        slots = shopManager.User.Inven.ToArray();
-        int i = 0;
-        foreach(Unit unit in shopManager.User.Inven)
-        {
-            slots[i] = unit;
-            i++;
-        }
-        UpdateUI();
+        instance = this;
     }
 
     private void Start()
     {
-        //slots = new Unit[uiSlots.Length];
-        usedSlots = new Unit[usedUISlots.Length];        
-
+        slots = new ItemSlot[uiSlots.Length];
+        usedSlots = new ItemSlot[usedUISlots.Length];
+        
         for (int i = 0; i < slots.Length; i++)
         {
-            //slots[i] = new Unit();
+            slots[i] = new ItemSlot();
             uiSlots[i].index = i;
             uiSlots[i].Clear();
         }
         for (int i = 0; i < usedSlots.Length; i++)
         {
-            usedSlots[i] = new Unit();
+            usedSlots[i] = new ItemSlot();
             usedUISlots[i].index = i;
             usedUISlots[i].Clear();
         }
-        //FireBall.OnAddItem();
+        FireBall.OnAddItem();
         ClearSelectedItemWindow();
     }
 
-    public void AddItem(Unit item)
+    public void AddItem(ItemData item)
     {
-        Unit emptySlot = GetEmptySlot();
+        ItemSlot emptySlot = GetEmptySlot();
         if (emptySlot != null)
         {
-            emptySlot = item;
+            emptySlot.item = item;
             UpdateUI();
             return;
         }
     }
 
     void UpdateUI()
-    {        
+    {
         for (int i = 0; i < slots.Length; i++)
         {
-            if (slots[i].Data != null)
+            if (slots[i].item != null)
                 uiSlots[i].Set(slots[i]);
 
             else
@@ -109,18 +92,18 @@ public class UnitManagement : MonoBehaviour
         }
         for (int i = 0; i < usedUISlots.Length; i++)
         {
-            if (usedSlots[i].Data != null)
+            if (usedSlots[i].item != null)
                 usedUISlots[i].Set(usedSlots[i]);
             else
                 usedUISlots[i].Clear();
         }
     }
 
-    Unit GetEmptySlot()
+    ItemSlot GetEmptySlot()
     {
         for (int i = 0; i < slots.Length; i++)
         {
-            if (slots[i].Data == null)
+            if (slots[i].item == null)
                 return slots[i];
         }
         return null;
@@ -128,19 +111,18 @@ public class UnitManagement : MonoBehaviour
 
     public void SelectItem(int index)
     {
-        if (slots[index].Data == null)
+        if (slots[index].item == null)
             return;
         selectedItem = slots[index];
         selectedItemIndex = index;
 
-        selectedItemName.text = selectedItem.Data.Name;
-        selectedItemDescription.text = selectedItem.Data.detailEx;
-        selectedItemAtk.text = "공격력:" + selectedItem.Data.Stat.atk.ToString();
-        selectedItemAtkSpeed.text = "공격속도" + selectedItem.Data.Stat.atkS.ToString();
-        useButton.SetActive(selectedItem.Data.Equip == false);
-        unUseButton.SetActive(selectedItem.Data.Equip == true);
+        selectedItemName.text = selectedItem.item.displayName;
+        selectedItemDescription.text = selectedItem.item.description;
+        selectedItemAtk.text = "공격력:" + selectedItem.item.atk.ToString();
+        selectedItemAtkSpeed.text = "공격속도" + selectedItem.item.atkSpeed.ToString();
+        useButton.SetActive(selectedItem.item.used == false);
+        unUseButton.SetActive(selectedItem.item.used == true);
         dropButton.SetActive(true);
-        upgradeButton.SetActive(true);
     }
 
     private void ClearSelectedItemWindow()
@@ -153,17 +135,16 @@ public class UnitManagement : MonoBehaviour
         useButton.SetActive(false);
         unUseButton.SetActive(false);
         dropButton.SetActive(false);
-        upgradeButton.SetActive(false);
     }
 
     public void OnUseButton()
     {
-        slots[selectedItemIndex].Data.Equip = true;
+        slots[selectedItemIndex].item.used = true;
         for(int i=0;i<usedSlots.Length;i++)
         {
-            if (usedSlots[i].Data == null)
+            if (usedSlots[i].item == null)
             {
-                usedSlots[i].Data = slots[selectedItemIndex].Data;
+                usedSlots[i].item = slots[selectedItemIndex].item;
                 break;
             }
         }
@@ -174,7 +155,7 @@ public class UnitManagement : MonoBehaviour
 
     void UnUse(int index)
     {
-        slots[index].Data.Equip = false;
+        slots[index].item.used = false;
         UpdateUI();
         if (selectedItemIndex == index)
         {
@@ -184,12 +165,12 @@ public class UnitManagement : MonoBehaviour
 
     public void OnUnUseButton()
     {
-        slots[selectedItemIndex].Data.Equip = false;
+        slots[selectedItemIndex].item.used = false;
         for (int i = 0; i < usedSlots.Length; i++)
         {
-            if (usedSlots[i].Data != null && usedSlots[i].Data.Equip == false)
+            if (usedSlots[i].item != null && usedSlots[i].item.used == false)
             {
-                usedSlots[i].Data = null;
+                usedSlots[i].item = null;
                 break;
             }
         }
@@ -203,65 +184,25 @@ public class UnitManagement : MonoBehaviour
         RemoveSelectedItem();
     }
 
-    public void OnUpgradeButton()
-    {
-        upgradeButton.SetActive(false);
-        speedUpgradeButton.SetActive(true);
-        atkUpgradeButton.SetActive(true);
-        cancelButton.SetActive(true);
-    }
-
-    public void OnCancelButton()
-    {
-        upgradeButton.SetActive(true);
-        speedUpgradeButton.SetActive(false);
-        atkUpgradeButton.SetActive(false);
-        cancelButton.SetActive(false);
-    }
-
-    public void OnSpeedUpgradeButton()
-    {
-        upgradeButton.SetActive(true);
-        speedUpgradeButton.SetActive(false);
-        atkUpgradeButton.SetActive(false);
-        cancelButton.SetActive(false);
-        slots[selectedItemIndex].Data.Stat.atkS += 1;
-        SelectItem(selectedItemIndex);
-    }
-
-    public void OnAtkUpgradeButton()
-    {
-        upgradeButton.SetActive(true);
-        speedUpgradeButton.SetActive(false);
-        atkUpgradeButton.SetActive(false);
-        cancelButton.SetActive(false);
-        slots[selectedItemIndex].Data.Stat.atk += 5;
-        SelectItem(selectedItemIndex);
-    }
-
     public void OnBackButton()
     {
         BG.SetActive(false);
-    }
-
-    public void OnStart()
-    {
-        BG.SetActive(true);
+        SceneManager.LoadScene("MainScene");
     }
 
     private void RemoveSelectedItem()
     {
-        slots[selectedItemIndex].Data.Equip = false;
+        slots[selectedItemIndex].item.used = false;
         for (int i = 0; i < usedSlots.Length; i++)
         {
-            if (usedSlots[i].Data != null && usedSlots[i].Data.Equip == false)
+            if (usedSlots[i].item != null && usedSlots[i].item.used == false)
             {
-                usedSlots[i].Data = null;
+                usedSlots[i].item = null;
                 break;
             }
         }
 
-        selectedItem.Data = null;
+        selectedItem.item = null;
         ClearSelectedItemWindow();
         UpdateUI();
     }
