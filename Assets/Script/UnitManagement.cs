@@ -37,11 +37,6 @@ public class UnitManagement : MonoBehaviour
     public GameObject dropButton;
     public GameObject backButton;
 
-    public GameObject upgradeButton;
-    public GameObject speedUpgradeButton;
-    public GameObject atkUpgradeButton;
-    public GameObject cancelButton;
-
     public ItemObject FireBall;
 
     public GameObject BG;
@@ -128,7 +123,6 @@ public class UnitManagement : MonoBehaviour
         useButton.SetActive(selectedItem.item.used == false);
         unUseButton.SetActive(selectedItem.item.used == true);
         dropButton.SetActive(true);
-        upgradeButton.SetActive(true);
     }
 
     private void ClearSelectedItemWindow()
@@ -141,7 +135,6 @@ public class UnitManagement : MonoBehaviour
         useButton.SetActive(false);
         unUseButton.SetActive(false);
         dropButton.SetActive(false);
-        upgradeButton.SetActive(false);
     }
 
     public void OnUseButton()
@@ -191,50 +184,10 @@ public class UnitManagement : MonoBehaviour
         RemoveSelectedItem();
     }
 
-    public void OnUpgradeButton()
-    {
-        upgradeButton.SetActive(false);
-        speedUpgradeButton.SetActive(true);
-        atkUpgradeButton.SetActive(true);
-        cancelButton.SetActive(true);
-    }
-
-    public void OnCancelButton()
-    {
-        upgradeButton.SetActive(true);
-        speedUpgradeButton.SetActive(false);
-        atkUpgradeButton.SetActive(false);
-        cancelButton.SetActive(false);
-    }
-
-    public void OnSpeedUpgradeButton()
-    {
-        upgradeButton.SetActive(true);
-        speedUpgradeButton.SetActive(false);
-        atkUpgradeButton.SetActive(false);
-        cancelButton.SetActive(false);
-        slots[selectedItemIndex].item.atkSpeed += 1;
-        SelectItem(selectedItemIndex);
-    }
-
-    public void OnAtkUpgradeButton()
-    {
-        upgradeButton.SetActive(true);
-        speedUpgradeButton.SetActive(false);
-        atkUpgradeButton.SetActive(false);
-        cancelButton.SetActive(false);
-        slots[selectedItemIndex].item.atk += 5;
-        SelectItem(selectedItemIndex);
-    }
-
     public void OnBackButton()
     {
         BG.SetActive(false);
-    }
-
-    public void OnStart()
-    {
-        BG.SetActive(true);
+        SceneManager.LoadScene("MainScene");
     }
 
     private void RemoveSelectedItem()
