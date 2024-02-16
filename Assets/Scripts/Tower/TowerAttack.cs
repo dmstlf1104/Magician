@@ -5,8 +5,8 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.XR;
 
-public enum WeaponType {Cannon = 0,}
-public enum AttackState { SearchTarget = 0, TryAttackCannon, }
+public enum WeaponType {Cannon = 0,Laser,}
+public enum AttackState { SearchTarget = 0, TryAttackCannon, TryAttackLaser, }
 public class TowerAttack : MonoBehaviour
 {
     [Header("Commons")]
@@ -16,6 +16,11 @@ public class TowerAttack : MonoBehaviour
 
     [Header("Cannon")]
     [SerializeField] private GameObject bulletTilePrefab; //발사체 프리팹
+
+    [Header("Laser")]
+    [SerializeField] private LineRenderer lineRenderer; //레이저선
+    [SerializeField] private Transform  hitEffect; //타격효과
+    [SerializeField] private LayerMask targetLayer; //광선에 부딫히는 레이어 설정
 
     private int level = 0; //레벨
     private AttackState attackState = AttackState.SearchTarget; //무기상태
@@ -73,7 +78,14 @@ public class TowerAttack : MonoBehaviour
 
             if(attackTarget != null)
             {
-                ChangeState(AttackState.TryAttackCannon);
+                if(weaponType == WeaponType.Cannon)
+                {
+                    ChangeState(AttackState.TryAttackCannon);
+                }
+                else if(weaponType == WeaponType.Laser)
+                {
+                    ChangeState(AttackState.TryAttackLaser);
+                }
             }
             yield return null;
         }
@@ -99,6 +111,27 @@ public class TowerAttack : MonoBehaviour
         clone.GetComponent<Bullet>().Setup(attackTarget, towerTemplate.weapon[level].damage);
         //Instantiate(bulletTilePrefab, spawnPoint.position, Quaternion.identity);
     }
+    
+    private IEnumerator TryAttackLaser()
+    {
+        EnableLaser();
+
+        while (true)
+        {
+            //타겟없음
+            if(IsPossibleToAttackTarget() == false)
+            {
+                //타격효과 비활성화
+                DisableLaser();
+                ChangeState(AttackState.SearchTarget);
+                break;
+            }
+
+            SpawnLaser();
+
+            yield return null;
+        }
+    }
 
     public bool Upgrade()
     {
@@ -111,7 +144,12 @@ public class TowerAttack : MonoBehaviour
         spriteRenderer.sprite = towerTemplate.weapon[level].sprite;
         //타워골드
         playerMP.CurrentMana -= towerTemplate.weapon[level].cost;
-
+        if(weaponType == WeaponType.Laser)
+        {
+            //레벨비례 레이저의 굵기
+            lineRenderer.startWidth = 0.05f + level * 0.05f;
+            lineRenderer.endWidth = 0.05f;
+        }
         return true;
     }
 
@@ -156,4 +194,34 @@ public class TowerAttack : MonoBehaviour
         return true;
     }
 
+    private void EnableLaser()
+    {
+        lineRenderer.gameObject.SetActive(true);
+        hitEffect.gameObject.SetActive(true);
+    }
+    private void DisableLaser()
+    {
+        lineRenderer.gameObject.SetActive(false);
+        hitEffect.gameObject.SetActive(false);
+    }
+    private void SpawnLaser()
+    {
+        Vector3 direction = attackTarget.position - spawnPoint.position;
+        RaycastHit2D[] hit = Physics2D.RaycastAll(spawnPoint.position, direction, towerTemplate.weapon[level].range,targetLayer);
+
+        for(int i = 0; i < hit.Length; i++)
+        {
+            if (hit[i].transform == attackTarget)
+            {
+                //시작지점
+                lineRenderer.SetPosition(0, spawnPoint.position);
+                //목표지점
+                lineRenderer.SetPosition(1, new Vector3(hit[i].point.x, hit[i].point.y, 0) + Vector3.back);
+                //효과  위치
+                hitEffect.position = hit[i].point;
+                //체력감소
+                attackTarget.GetComponent<EnemyHp>().TakeDamage(towerTemplate.weapon[level].damage * Time.deltaTime);
+            }
+        }
+    }
 }
