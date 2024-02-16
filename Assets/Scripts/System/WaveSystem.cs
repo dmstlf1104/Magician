@@ -6,6 +6,7 @@ public class WaveSystem : MonoBehaviour
 {
     [SerializeField] private Wave[] waves;
     [SerializeField] private EnemySpawner EnemySpawner;
+    public bool Victory = false;
     private int currentWaveIndex = -1; //현재 웨이브
 
     public int CurrentWave => currentWaveIndex + 1;
@@ -17,6 +18,10 @@ public class WaveSystem : MonoBehaviour
         {
             currentWaveIndex++;
             EnemySpawner.StartWave(waves[currentWaveIndex]);
+        }
+        else if(EnemySpawner.EnemyList.Count == 0 && currentWaveIndex >= waves.Length - 1)
+        {
+            Victory = true;
         }
     }
 } 

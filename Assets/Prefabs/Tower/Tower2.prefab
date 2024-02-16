@@ -10,9 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 3586446672018324185}
   - component: {fileID: 3290078188656774368}
+  - component: {fileID: 5839607951507849255}
+  - component: {fileID: 661297650462462782}
   m_Layer: 0
   m_Name: Tower2
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33,7 +35,7 @@ Transform:
   - {fileID: 7038415164755008009}
   - {fileID: 4677964565593105685}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3290078188656774368
 SpriteRenderer:
@@ -87,6 +89,48 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5839607951507849255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613879100983381110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9ec1098454bc804396024bd167ab6cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerTemplate: {fileID: 11400000, guid: 96272676479946b42b40d2d8bf1d25a8, type: 2}
+  spawnPoint: {fileID: 5935362492606932951}
+  weaponType: 1
+  bulletTilePrefab: {fileID: 0}
+  lineRenderer: {fileID: 7991343191177038043}
+  hitEffect: {fileID: 4677964565593105685}
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 64
+--- !u!65 &661297650462462782
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613879100983381110}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.024, y: 1.024, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3409960556232625167
 GameObject:
   m_ObjectHideFlags: 0
