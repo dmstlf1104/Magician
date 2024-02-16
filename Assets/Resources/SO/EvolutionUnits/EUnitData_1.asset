@@ -30,3 +30,4 @@ MonoBehaviour:
   EarthType: 0
   UnitIndex: 0
   Equip: 0
+  EvolutionTrue: 1

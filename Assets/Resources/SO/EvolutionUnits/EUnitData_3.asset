@@ -28,6 +28,6 @@ MonoBehaviour:
   FireType: 1
   FrostType: 0
   EarthType: 0
-  UnitIndex: 0
+  UnitIndex: 2
   Equip: 0
-  EvolutionTrue: 1
+  EvolutionTrue: 0

@@ -37,8 +37,7 @@ public class UserData
     public int gold;
     public List<Unit> Inven = new List<Unit>();
     public List<Unit> SellUnits = new List<Unit>();
-    public List<Relic> OwnedRelics = new List<Relic>();
-    public List<EvolutionUnit> EvolutionUnits = new List<EvolutionUnit>();
+    public List<Relic> OwnedRelics = new List<Relic>();    
 }
 
 [System.Serializable]
@@ -53,11 +52,6 @@ public class Relic
     public RelicData Data;
 }
 
-[System.Serializable]
-public class EvolutionUnit
-{    
-    public List<Unit> EUnits = new List<Unit>();
-}
 
 public class ShopManager : MonoBehaviour
 {
@@ -82,14 +76,7 @@ public class ShopManager : MonoBehaviour
     {
         User.gold = 20000;
         PlayerGold.text = User.gold.ToString();
-    }
-
-    public void PriceValue(Unit unit)
-    {
-        this.unit = unit;
-
-        Price.text = unit.Data.Price.ToString();
-    }
+    }   
 
     public void SceneChange()
     {
