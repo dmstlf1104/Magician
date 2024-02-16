@@ -50,7 +50,6 @@ public class UnitManagement : MonoBehaviour
 
     private void Start()
     {
-        SceneManager.LoadScene("IntroScene");
         slots = new ItemSlot[uiSlots.Length];
         usedSlots = new ItemSlot[usedUISlots.Length];
         
@@ -68,7 +67,6 @@ public class UnitManagement : MonoBehaviour
         }
         FireBall.OnAddItem();
         ClearSelectedItemWindow();
-        BG.SetActive(false);
     }
 
     public void AddItem(ItemData item)
@@ -190,12 +188,6 @@ public class UnitManagement : MonoBehaviour
     {
         BG.SetActive(false);
         SceneManager.LoadScene("MainScene");
-    }
-
-    public void OnStart()
-    {
-        BG.SetActive(true);
-        SceneManager.LoadScene("UnitManagementScene");
     }
 
     private void RemoveSelectedItem()

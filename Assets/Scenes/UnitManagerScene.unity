@@ -3467,7 +3467,7 @@ MonoBehaviour:
   dropButton: {fileID: 990321811}
   backButton: {fileID: 1360952918}
   FireBall: {fileID: 9066810675560307566, guid: 2ac73da5efebcec438c19dc1badca501, type: 3}
-  BG: {fileID: 555126892}
+  BG: {fileID: 1204723266}
 --- !u!1 &1207617595
 GameObject:
   m_ObjectHideFlags: 0
