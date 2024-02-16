@@ -14,4 +14,14 @@ public class SceneChange : MonoBehaviour
     {
         SceneManager.LoadScene("StoreScene");
     }
+
+    public void gamestart()
+    {
+        SceneManager.LoadScene("MapScene1");
+    }
+
+    public void choosegames()
+    {
+        SceneManager.LoadScene("StageScene");
+    }
 }
