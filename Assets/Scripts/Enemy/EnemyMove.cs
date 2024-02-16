@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum EnemyDestroyType { kill = 0, Arrive}
 public class EnemyMove : MonoBehaviour
 {
     private int wayPointCount; //이동경로 개수
@@ -10,6 +11,7 @@ public class EnemyMove : MonoBehaviour
     private Movement2D movement2D; //오브젝트 이동제어
     private SpriteRenderer rend;
     private EnemySpawner enemySpawner;
+    [SerializeField] private int mana = 10;
 
     public void Start()
     {
@@ -64,7 +66,8 @@ public class EnemyMove : MonoBehaviour
         //지금이 마지막 waypoint면
         else
         {
-            OnDie();
+            mana = 0;
+            OnDie(EnemyDestroyType.Arrive);
         }
     }
 
@@ -83,8 +86,8 @@ public class EnemyMove : MonoBehaviour
         }
     }
 
-    public void OnDie()
+    public void OnDie(EnemyDestroyType type)
     {
-        enemySpawner.DestroyEnemy(this);
+        enemySpawner.DestroyEnemy(type,this,mana);
     }
 }
