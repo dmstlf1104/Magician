@@ -8,14 +8,15 @@ using UnityEngine.UI;
 public class Status
 {
     public int atk;
-    public int atkS;
+    public float atkS;
     public int crt;
     public int def;
     public int msp;
     public int slow;
     public int stun;
+    public float range;
 
-    public Status(int atk, int crt, int def, int msp, int atkS, int slow, int stun)
+    public Status(int atk, int crt, int def, int msp, float atkS, int slow, int stun, float range)
     {
         this.atk = atk;
         this.crt = crt;
@@ -24,6 +25,7 @@ public class Status
         this.atkS = atkS;
         this.slow = slow;
         this.stun = stun;
+        this.range = range;
     }
 }
 
@@ -32,7 +34,7 @@ public class UserData
 {
     //public Status Stat; 유물 스탯 더하기용
     public int gold;
-    //public List<Unit> Inventory = new List<Unit>(); 인벤토리 추가
+    public List<Unit> Inventory = new List<Unit>();
     public List<Unit> SellUnits = new List<Unit>();
     public List<Relic> OwnedRelics = new List<Relic>();
     public List<EvolutionUnit> EvolutionUnits = new List<EvolutionUnit>();
