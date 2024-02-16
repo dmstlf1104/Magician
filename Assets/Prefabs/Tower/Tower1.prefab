@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 5365156737652695274}
   - component: {fileID: 914649032828521254}
   - component: {fileID: -1666322536676849691}
+  - component: {fileID: 4636132736591159877}
   m_Layer: 0
   m_Name: Tower1
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,8 +75,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: d5730d7ed42de484bbd1484aff07f663, type: 3}
+  m_SortingOrder: 11
+  m_Sprite: {fileID: 21300000, guid: c28d0cd2ac2958b408ec18297b3abb7e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,10 +99,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9ec1098454bc804396024bd167ab6cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletTilePrefab: {fileID: 6820880158935081697, guid: 5bb12f2d5210fdd4b8463526e2cd5846, type: 3}
+  towerTemplate: {fileID: 11400000, guid: aac7b03a05af7da4aa3188285459ec93, type: 2}
   spawnPoint: {fileID: 2485490261878242632}
-  attackRate: 0.5
-  attackRange: 4
+  weaponType: 0
+  bulletTilePrefab: {fileID: 6820880158935081697, guid: 5bb12f2d5210fdd4b8463526e2cd5846, type: 3}
+--- !u!65 &4636132736591159877
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6469771337581152257}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.024, y: 1.024, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6942085509215743079
 GameObject:
   m_ObjectHideFlags: 0
@@ -126,7 +148,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6942085509215743079}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.3, y: -0.3, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
