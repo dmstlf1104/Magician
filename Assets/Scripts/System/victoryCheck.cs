@@ -31,7 +31,7 @@ public class victoryCheck : MonoBehaviour
     }
     private void Win()
     {
-
+        Debug.Log("½Â¸®");
     }
 
     private void Defeat()
