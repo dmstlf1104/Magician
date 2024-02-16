@@ -24,12 +24,7 @@ public class WaveSystem : MonoBehaviour
         else if(EnemySpawner.EnemyList.Count == 0 && currentWaveIndex >= waves.Length - 1)
         {
             Victory = true;
-        }
-
-        if (Victory == true)
-        {
-            SceneManager.LoadScene("RewardScene");
-        }
+        }        
     }
 } 
 [System.Serializable] public struct Wave

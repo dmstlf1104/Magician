@@ -31,11 +31,11 @@ public class victoryCheck : MonoBehaviour
     }
     private void Win()
     {
-
+        SceneManager.LoadScene("RewardScene");
     }
 
     private void Defeat()
     {
-        SceneManager.LoadScene("StageScene");
+        SceneManager.LoadScene("RewardScene");
     }
 }

@@ -27,12 +27,7 @@ public class PlayerHP : MonoBehaviour
         if(currentHP <= 0)
         {
             defeat = true;
-        }
-
-        if(defeat == true)
-        {
-            SceneManager.LoadScene("RewardScene");
-        }
+        }        
     }
 
     private IEnumerator HitAlphaAnimation()
