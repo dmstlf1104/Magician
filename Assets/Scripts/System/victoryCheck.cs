@@ -4,8 +4,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class victoryCheck : MonoBehaviour
 {
-    [SerializeField] public WaveSystem waveSystem;
-    [SerializeField] public PlayerHP playerHP;
+    public WaveSystem waveSystem;
+    public PlayerHP playerHP;
+
+    private bool vic;
+    private bool def;
 
     private void Awake()
     {
@@ -15,6 +18,8 @@ public class victoryCheck : MonoBehaviour
 
     private void Update()
     {
+        waveSystem = GameObject.Find("EnemySpawner").GetComponent<WaveSystem>();
+        playerHP = GameObject.Find("PlayerStats").GetComponent<PlayerHP>();
         if (waveSystem.Victory == true)
         {
             Win();
@@ -26,7 +31,7 @@ public class victoryCheck : MonoBehaviour
     }
     private void Win()
     {
-
+        Debug.Log("½Â¸®");
     }
 
     private void Defeat()
