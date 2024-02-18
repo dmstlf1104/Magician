@@ -16,6 +16,11 @@ public class RewardManager : MonoBehaviour
 
     int earnGold;
 
+    private void Awake()
+    {
+        waveSystem = FindObjectOfType<WaveSystem>();
+        playerHP = FindObjectOfType<PlayerHP>();
+    }
     private void Start()
     {
         if(waveSystem.Victory == true)
@@ -26,7 +31,7 @@ public class RewardManager : MonoBehaviour
             EarnGold.text = earnGold.ToString();
             ShopManager.Instance.User.gold += earnGold;
         }
-        else if(playerHP.defeat == false)
+        else if(playerHP.defeat == true)
         {
             GameClear.SetActive(false);
             GameOver.SetActive(true);
